@@ -1,0 +1,9 @@
+#img:hover{
+  box-shadow: -5px 6px 20px 0px rgba(9, 64, 182, 0.753);
+  animation-duration: 5s;
+  // background: red;
+  transition: background ease-in-out 0.2s;
+  animation-iteration-count: infinite;
+  transform: scale(1.05);
+
+}

@@ -1,0 +1,8 @@
+https://registro-cilvil.autlan.gob.mx/admin/login
+<<<<<<< HEAD
+=======
+
+
+user: Registro Civil
+pass: r361stroCiv11
+>>>>>>> 1b07ce865abc0b0964c59e0141f2334ba7bd8755

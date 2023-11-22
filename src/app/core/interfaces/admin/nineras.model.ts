@@ -1,0 +1,14 @@
+export interface ninerasI{
+ID?:any;
+ID_EMPRESA:any;
+DES_NOMBRE:any;
+DES_APELLIDO_PATERNO:any;
+DES_APELLIDO_MATERNO:any;
+FECHA_NACIMIENTO:any;
+DES_CLAVE_ACCESO:any;
+NUM_CELULAR:any;
+DES_DOMICILIO:any;
+URL_FOTO:any;
+SALA:any;
+ESTATUS:number;
+}

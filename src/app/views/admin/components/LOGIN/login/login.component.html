@@ -1,0 +1,152 @@
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>SAION - Tecnología gubernamental</title>
+  <meta content="" name="description" />
+  <meta content="" name="keywords" />
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon" />
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet"
+  />
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link
+    href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+  <link
+    href="/assets/vendor/glightbox/css/glightbox.min.css"
+    rel="stylesheet"
+  />
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet" />
+
+  <!-- =======================================================
+  * Template Name: Company - v4.7.0
+  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<div
+  class="login animate__animated animate__fadeInLeft"
+  style="margin-top: 160px"
+>
+  <div class="form" style="justify-content: center; text-align: center">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+      <h4
+        class="animate__animated animate__fadeInRight"
+        style="
+          text-align: center;
+          color: #000000;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+            sans-serif;
+          margin-top: 7vh;
+        "
+      >
+        Iniciar Sesión
+      </h4>
+
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <strong
+            class="animate__animated animate__fadeInRight"
+            for=""
+            style="
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+              color: #000000;
+            "
+            >Usuario:</strong
+          >
+          <input
+            class="form-control animate__animated animate__fadeInRight"
+            style="color: #000000"
+            formControlName="usuario"
+          />
+        </div>
+      </div>
+
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <strong
+            class="animate__animated animate__fadeInRight"
+            for=""
+            style="
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+              color: #000000;
+            "
+            >Contraseña:</strong
+          >
+          <input
+            type="password"
+            class="form-control animate__animated animate__fadeInRight"
+            style="color: #000000"
+            formControlName="contrasena"
+          />
+        </div>
+      </div>
+
+      <input
+        style="
+          background-color: #000000;
+          color: #ffffff;
+          width: 50%;
+          justify-content: center;
+          text-align: center;
+        "
+        type="submit"
+        value="Aceptar"
+        class="submit"
+      />
+    </form>
+    <div
+      class="animate__animated animate__fadeInRight"
+      style="
+        color: #000000;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+          sans-serif;
+        margin-top: 2vh;
+      "
+    >
+      Copyright &copy; 2021-2024 &mdash; AUTLAN
+    </div>
+
+    <div class="row" style="justify-content: center; width: 100%">
+      <div class="animate__animated animate__fadeInDown" class="col-12">
+        <label
+          style="color: #000000; margin-left: 38%; margin-right: 30%"
+          *ngIf="this.login === false"
+          >Revise los datos o su conexión</label
+        >
+      </div>
+      <div class="col-12">
+        <div *ngIf="iniciandoSesion === true" class="spinner"></div>
+      </div>
+    </div>
+  </div>
+</div>

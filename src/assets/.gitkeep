@@ -1,0 +1,8 @@
+.section{
+  .color-1 {color: #DAF7A6;}
+.color-2 {color: #FFC300;}
+.color-3 {color: #FF5733;}
+.color-4 {color: #C70039;}
+.color-5 {color: #900C3F;}
+.color-6 {color: #581845;}
+}

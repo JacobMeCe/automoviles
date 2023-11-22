@@ -1,0 +1,160 @@
+
+.section-title{
+  justify-content: center;
+  justify-items: center;
+   margin: auto;
+   box-sizing: border-box;
+   box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753);
+
+   padding: 3px;
+   cursor: pointer;
+   background-image: url("https://i.imgur.com/HVD224y.png");  justify-items: start;
+   border-radius: 4vh;
+   width: 50%;
+   height: 1500px;
+   ::-webkit-scrollbar{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track{
+    --webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #888686c1;
+    border-radius: 10px;
+}
+#icono:hover{
+  transform: scale(1.05);
+}
+}
+
+.fondo{
+  justify-content: center;
+  justify-items: center;
+   margin: auto;
+   box-sizing: border-box;
+   box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753);
+
+   padding: 3px;
+   cursor: pointer;
+   background-image: url("https://i.imgur.com/HVD224y.png");  justify-items: start;
+   border-radius: 4vh;
+   width: 100%;
+   height: 100%;
+   ::-webkit-scrollbar{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track{
+    --webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #888686c1;
+    border-radius: 10px;
+}
+#icono:hover{
+  transform: scale(1.05);
+}
+ }
+
+ #scroll{
+    height: 100%;
+    overflow-y: scroll;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+ }
+
+ body {
+  background-color: #fbfbfb;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+button {
+  background-color: #3f3f3f;
+  border-color: #3f3f3f;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+.fondo{
+  justify-content: center;
+  justify-items: center;
+   margin: auto;
+   box-sizing: border-box;
+   box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753);
+
+   padding: 3px;
+   cursor: pointer;
+
+   width: 50%;
+   height: 400px;
+   ::-webkit-scrollbar{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track{
+    --webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #888686c1;
+    border-radius: 10px;
+}
+#icono:hover{
+  transform: scale(1.05);
+}
+ }
+
+ #scroll{
+    height: 100%;
+    overflow-y: scroll;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+ }
+
+ body {
+  background-color: #fbfbfb;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+button {
+  background-color: #3f3f3f;
+  border-color: #3f3f3f;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+  height: 246px;
+}
+

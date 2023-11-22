@@ -1,0 +1,92 @@
+.fondo{
+  justify-content: center;
+  justify-items: center;
+   margin: auto;
+   box-sizing: border-box;
+   box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753);
+  border-radius: 4vh;
+   padding: 3px;
+   cursor: pointer;
+   background-image: url("https://i.imgur.com/7BsOjON.png");  justify-items: start;
+   width: 90%;
+   height: 500px;
+   opacity: 1,1,1;
+   ::-webkit-scrollbar{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track{
+    --webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #888686c1;
+    border-radius: 10px;
+}
+#icono:hover{
+  transform: scale(1.05);
+}
+ }
+
+ .fondo1{
+  justify-content: center;
+  justify-items: center;
+   margin: auto;
+   box-sizing: border-box;
+
+   padding: 3px;
+   cursor: pointer;
+
+   width: 100%;
+   height: 370px;
+   ::-webkit-scrollbar{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track{
+    --webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #888686c1;
+    border-radius: 10px;
+}
+#icono:hover{
+  transform: scale(1.05);
+}
+ }
+
+ #scroll{
+    height: 85%;
+    overflow-y: scroll;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+ }
+
+ body {
+  background-color: #fbfbfb;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+button {
+  background-color: #3f3f3f;
+  border-color: #3f3f3f;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+

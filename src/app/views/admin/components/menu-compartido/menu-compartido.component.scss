@@ -1,0 +1,113 @@
+.fondo{
+  justify-content: center;
+  justify-items: center;
+   margin: auto;
+   box-sizing: border-box;
+   box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753);
+
+   padding: 3px;
+   cursor: pointer;
+
+   width: 80%;
+   height: 698px;
+   ::-webkit-scrollbar{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track{
+    --webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #888686c1;
+    border-radius: 10px;
+}
+#icono:hover{
+  transform: scale(1.05);
+}
+ }
+
+ #scroll{
+    height: 698px;
+    overflow-y: scroll;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+ }
+
+ #scroll2{
+  height: 698px;
+  overflow-y: scroll;
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+}
+ body {
+  background-color: #fbfbfb;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 698px;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 200px;
+  margin-left: 100px;
+  z-index: 698px;
+  margin-top: 55px;
+  ::-webkit-scrollbar{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track{
+    --webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #888686c1;
+    border-radius: 10px;
+}
+#icono:hover{
+  transform: scale(1.05);
+}
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+button {
+  color: #000000;
+  text-decoration: none;
+}
+
+button:hover {
+  color: #0070BA;
+  text-decoration: none;
+}
+

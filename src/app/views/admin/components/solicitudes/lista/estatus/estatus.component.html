@@ -1,0 +1,314 @@
+<p>solicitudes works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Blog Single - Company Bootstrap Template</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="/assets/img/favicon.png" rel="icon" />
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <link href="/assets/css/style.css" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: Company - v4.7.0
+  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+
+  <body>
+    <section
+      style="background-color: rgb(255, 255, 255); margin-top: 100px"
+      id="services"
+      class="services section-bg"
+    >
+      <section>
+        <div class="container">
+          <div
+            class="row justify-content-center"
+            style="
+              border: solid;
+              border-radius: 2vh;
+              border-color: rgb(255, 255, 255);
+              box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753);
+            "
+          >
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+              <div class="row">
+                <div class="col text-center">
+                  <img
+                    src="https://i.imgur.com/WKrEdF2.png"
+                    height="100"
+                    width="100"
+                    alt=""
+                    style="margin-top: 1vh"
+                  />
+                  <h1>Solicitud</h1>
+                  <p style="margin-top: 1vh" class="text-h3">
+                    Datos recibidos de la solicitud
+                  </p>
+
+                  <strong
+                    *ngIf="estatus == 0"
+                    style="margin-top: 1vh; font-size: 2vh"
+                    class="text-h3"
+                    >Estado actual:
+                  </strong>
+                  <strong
+                    *ngIf="estatus == 0"
+                    style="margin-top: 1vh; color: #c20404; font-size: 2vh"
+                  >
+                    Sin atender</strong
+                  >
+                  <strong
+                    *ngIf="estatus == 1"
+                    style="margin-top: 1vh; font-size: 2vh"
+                    class="text-h3"
+                    >Estado actual:
+                  </strong>
+                  <strong
+                    *ngIf="estatus == 1"
+                    style="margin-top: 1vh; color: #d0d700; font-size: 2vh"
+                    >En progreso</strong
+                  >
+                  <strong
+                    *ngIf="estatus == 2"
+                    style="margin-top: 1vh; font-size: 2vh"
+                    class="text-h3"
+                    >Estado actual:
+                  </strong>
+                  <strong
+                    *ngIf="estatus == 2"
+                    style="margin-top: 1vh; color: #14c204; font-size: 2vh"
+                  >
+                    Completado</strong
+                  >
+                </div>
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <strong
+                    for=""
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Nombre:</strong
+                  >
+                  <input
+                    class="form-control"
+                    placeholder="{{ nombre }}"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <strong
+                    for=""
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Apellidos:</strong
+                  >
+                  <input
+                    class="form-control"
+                    placeholder="{{ apellidos }}"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <strong
+                    for=""
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Teléfono:</strong
+                  >
+                  <input
+                    class="form-control"
+                    placeholder="{{ telefono }}"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <strong
+                    for=""
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Dirección:</strong
+                  >
+                  <input
+                    class="form-control"
+                    placeholder="{{ direccion }}"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <strong
+                    for=""
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Localidad:</strong
+                  >
+                  <input
+                    class="form-control"
+                    placeholder="{{ localidad }}"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <strong
+                    for=""
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Particular:</strong
+                  >
+                  <input
+                    class="form-control"
+                    placeholder="{{ particular }}"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <strong
+                    for=""
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Responsable:</strong
+                  >
+                  <input
+                    class="form-control"
+                    placeholder="{{ responsable }}"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <strong
+                    for=""
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                    >Asunto:</strong
+                  >
+                  <textarea
+                    style="text-align: justify"
+                    class="form-control"
+                    placeholder="{{ asunto }}"
+                    readonly
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="row justify-content-start mt-4">
+                <div class="col-4">
+                  <button
+                    type="submit"
+                    class="btn mt-4"
+                    style="
+                      width: 100%;
+                      margin-bottom: 5vh;
+                      background-color: #c20404;
+                      color: rgb(255, 255, 255);
+                    "
+                    (click)="cancelar()"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="submit"
+                    class="btn mt-4"
+                    style="
+                      width: 100%;
+                      margin-bottom: 5vh;
+                      background-color: #d0d700;
+                      color: rgb(255, 255, 255);
+                    "
+                    (click)="progreso()"
+                  >
+                    Marcar en Progreso
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="submit"
+                    class="btn mt-4"
+                    style="
+                      width: 100%;
+                      margin-bottom: 5vh;
+                      background-color: #14c204;
+                      color: rgb(255, 255, 255);
+                    "
+                    (click)="terminada()"
+                  >
+                    Terminar Solicitud
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- End Services Section -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

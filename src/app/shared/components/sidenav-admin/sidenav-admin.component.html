@@ -1,0 +1,236 @@
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Company - v4.7.0
+  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<header id="header" class="fixed-top">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <section class="section"
+    style="margin-top: -20px; background-color: rgb(0, 0, 0); margin-left: 10%; margin-right: 10%;width: 80%; height: 80%; border-radius: 2vh;"
+    id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 style="font-size: 2vh; color: rgb(255, 255, 255);">{{this.dato1}}</h2>
+        <ol>
+          <h2 style="font-size: 2vh; color: rgb(255, 255, 255);">{{this.dato2}}</h2>
+          <div class="header-social-links d-flex">
+
+            <a style="color: aliceblue;" href="{{this.twitter}}" target="_blank" class="twitter"><i
+                class="bu bi-twitter"></i></a>
+            <a style="color: aliceblue;" href="{{this.facebook}}" target="_blank" class="facebook"><i
+                class="bu bi-facebook"></i></a>
+            <a style="color: aliceblue;" href="{{this.youtube}}" target="_blank" class="youtube"><i
+                class="bu bi-youtube"></i></a>
+            <a *ngIf="this.token===false" style="color: aliceblue;" href="/admin/login" class="youtube"><i
+                class="bu bi-person-circle"></i></a>
+
+            <button style="height: 1px; border:transparent; border-color: transparent; margin-top: -5.3px; margin-left: 15px;color: rgb(251, 251, 251); font-size: 2vh;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            " *ngIf="this.token===true" (click)="cerrar()" class="facebook">Cerrar Sesión</button>
+          </div>
+        </ol>
+      </div>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+
+
+  <div class="container d-flex align-items-center">
+
+    <img [src]="this.logo" alt="logo_Autlan" height="70px" width="200px">
+
+    <div *ngIf="this.token === true">
+      <button style="border: 0px; background-color: rgb(255, 255, 255);"> <a href="admin/logo"
+          style="color: aliceblue;"><img src="https://img.icons8.com/material-outlined/24/null/edit-image.png" /> </a>
+      </button>
+    </div>
+    <h1 class="logo me-auto"><a href="inicio"><span></span></a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+    <nav id="navbar" class="navbar order-last order-lg-0">
+
+
+
+
+
+      <ul>
+        <li><a href="admin/indice" class="active">Inicio</a></li>
+
+        <li><a href="admin/gobierno">GOBIERNO</a></li>
+
+        <li class="dropdown"><a><span>Ciudad</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="admin/turismo">TURISMO</a></li>
+            <li><a href="admin/lugares-de-interes">LUGARES DE INTERES</a>
+              <li><a href="admin/carnaval-de-autlan">CARNAVAL DE AUTLAN</a>
+            </li>
+          </ul>
+        </li>
+
+
+
+
+
+        <li class="dropdown"><a><span>TRANSPARENCIA</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+
+            <li class="dropdown"><a><span>H.AYUNTAMIENTO</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="https://transparencia.autlan.gob.mx/admin/articulo-8">ARTÍCULO 8</a></li>
+                <li><a href="https://transparencia.autlan.gob.mx/admin/articulo-15">ARTÍCULO 15</a>
+                <li><a href="https://transparencia.cimtra.autlan.gob.mx/admin/inicio">CIMTRA</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown"><a href="https://transparencia.dif.autlan.gob.mx"><span>DIF</span> <i
+                  class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="https://transparencia.dif.autlan.gob.mx/admin/articulo-8" target="_blank">ARTÍCULO 8</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="https://instituto-de-la-mujer.autlan.gob.mx"><span>INSTITUTO DE LA
+                  MUJER</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="https://instituto-de-la-mujer.autlan.gob.mx/admin/articulo-8">ARTÍCULO 8</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown"><a><span>INFORMACION FUNDAMENTAL</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="https://transparencia.autlan.gob.mx/admin/articulo-8">ARTÍCULO 8</a></li>
+                <li><a href="https://transparencia.autlan.gob.mx/admin/articulo-15">ARTÍCULO 15</a>
+
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li><a href="admin/sesiones">SESIONES</a></li>
+        <li><a href="admin/tramites-y-servicios">TRAMITES Y SERVICIOS</a></li>
+        <!--
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contacto">Contacto</a></li> -->
+
+        <li *ngIf="this.token===true" class="dropdown"><a><span>Subir Documentos</span> <i
+              class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a (click)="subirDocumento()">ARTÍCULO 8</a></li>
+            <li><a (click)="subirDocumento15()">ARTÍCULO 15</a>
+            </li>
+          </ul>
+        </li>
+
+
+
+      </ul>
+
+
+      <button class="bi bi-list mobile-nav-toggle" style="background: none; border: none;" data-bs-toggle="collapse"
+        data-bs-parent="#accordion" href="#collapse1">
+      </button>
+    </nav><!-- .navbar -->
+
+  </div>
+
+  <nav id="collapse1" class="panel-collapse collapse in mobile-nav-toggle" data-bs-parent="#accordion">
+    <div class="offcanvas-body">
+
+      <div id="sidebar" class="text-ceter" style="width: 90%;">
+        <div class="nav flex-column py-3">
+
+          <ul class="list-unstyled ps-0">
+            <ul class="list-unstyled ps-0">
+              <li class="btn align-items-center rounded ms-auto w-100"><a href="admin/indice" class="active">Inicio</a>
+              </li>
+              <li class="btn align-items-center rounded ms-auto w-100"><a href="admin/gobierno">Gobierno</a></li>
+
+              <li class="mb-1" class="btn align-items-center rounded ms-auto w-100">
+                <button id="usuarios" href="#ciudad" data-bs-toggle="collapse" data-bs-parent="#sidebar"
+                  style="background: none; border: none;">
+                  Ciudad <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="collapse animate__animated animate__zoomIn" id="ciudad" data-bs-parent="#sidebar">
+                  <ul class="btn align-items-center rounded ms-auto w-100">
+                    <li class="btn align-items-center rounded ms-auto w-100"><a href="admin/turismo">Turismo</a></li>
+                    <li class="btn align-items-center rounded ms-auto w-100"><a href="admin/lugares-de-interes">Lugares
+                        de interes</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="mb-1" class="btn align-items-center rounded ms-auto w-100">
+                <button id="usuarios" href="#transparencia" data-bs-toggle="collapse" data-bs-parent="#sidebar"
+                  style="background: none; border: none;">
+                  Transparencia <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="collapse animate__animated animate__zoomIn" id="transparencia" data-bs-parent="#sidebar">
+                  <ul class="btn align-items-center rounded ms-auto w-100">
+                    <li class="btn align-items-center rounded ms-auto w-100"><a
+                        href="https://transparencia.autlan.gob.mx/admin/articulo-8">Artículo 8</a></li>
+                    <li class="btn align-items-center rounded ms-auto w-100"><a
+                        href="https://transparencia.autlan.gob.mx/admin/articulo-15">Artículo 15</a></li>
+                    <li class="btn align-items-center rounded ms-auto w-100"><a href="admin/nominas">Nóminas</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="btn align-items-center rounded ms-auto w-100"><a href="admin/sesiones">Sesiones</a></li>
+              <li class="btn align-items-center rounded ms-auto w-100"><a href="admin/tramites-y-servicios">Tramites y
+                  Servicios</a></li>
+
+            </ul>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </nav>
+
+</header><!-- End Header -->
