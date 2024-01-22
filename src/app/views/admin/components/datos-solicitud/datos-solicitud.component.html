@@ -1,4 +1,4 @@
-<p>solicitudes works!</p>
+<p xmlns="http://www.w3.org/1999/html">solicitudes works!</p>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,35 +149,27 @@
                 <table class="table table-striped table-hover text-center table-bordered">
                   <thead>
                   <tr>
+                    <th scope="col">No.</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col">Costo</th>
                     <th scope="col">Kilometraje</th>
                   </tr>
                   </thead>
-                  <!-- TODO: add services -->
-                  <!-- this is an example -->
                   <tbody>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>Cambio de aceite</td>
-                    <td>$500</td>
-                    <td>10000</td>
-                  </tr>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>Cambio de aceite</td>
-                    <td>$500</td>
-                    <td>10000</td>
-                  </tr>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>Cambio de aceite</td>
-                    <td>$500</td>
-                    <td>10000</td>
+                  <tr
+                    *ngFor="let service of services | paginate: { itemsPerPage: 3, currentPage: currentPage.services, id: 'servicesTable' }, let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ service.date }}</td>
+                    <td>{{ service.description }}</td>
+                    <td>{{ service.kilometers }}</td>
                   </tr>
                   </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                  <pagination-controls id="servicesTable" (pageChange)="currentPage.services = $event"
+                                       previousLabel="Anterior"
+                                       nextLabel="Siguiente"></pagination-controls>
+                </div>
               </div>
             </div>
 
@@ -188,27 +180,25 @@
                 <table class="table table-striped table-hover text-center table-bordered">
                   <thead>
                   <tr>
+                    <th scope="col">No.</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Descripción</th>
                   </tr>
                   </thead>
-                  <!-- TODO: add insurances -->
-                  <!-- this is an example -->
                   <tbody>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>Description_Test</td>
-                  </tr>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>Description_Test</td>
-                  </tr>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>Description_Test</td>
+                  <tr
+                    *ngFor="let insurance of insurances | paginate: { itemsPerPage: 3, currentPage: currentPage.insurances, id: 'insurancesTable' }, let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ insurance.date }}</td>
+                    <td>{{ insurance.description }}</td>
                   </tr>
                   </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                  <pagination-controls id="insurancesTable" (pageChange)="currentPage.insurances = $event"
+                                       previousLabel="Anterior"
+                                       nextLabel="Siguiente"></pagination-controls>
+                </div>
               </div>
             </div>
 
@@ -219,27 +209,30 @@
                 <table class="table table-striped table-hover text-center table-bordered">
                   <thead>
                   <tr>
+                    <th scope="col">No.</th>
                     <th scope="col">Fecha</th>
-                    <th scope="col">Kilometraje</th>
+                    <th scope="col">Folio</th>
+                    <th scope="col">Tipo de Combustible</th>
+                    <th scope="col">Litros</th>
                   </tr>
                   </thead>
-                  <!-- TODO: add fuel -->
-                  <!-- this is an example -->
                   <tbody>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>10000</td>
-                  </tr>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>10000</td>
-                  </tr>
-                  <tr>
-                    <td>12/12/2020</td>
-                    <td>10000</td>
+                  <tr
+                    *ngFor="let fuel of fuels | paginate: { itemsPerPage: 3, currentPage: currentPage.fuels, id: 'fuelsTable' }, let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ fuel.date }}</td>
+                    <td>{{ fuel.folio }}</td>
+                    <td>{{ fuel.fuelType }}</td>
+                    <td>{{ fuel.liters }}</td>
                   </tr>
                   </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                  <pagination-controls id="fuelsTable" (pageChange)="currentPage.fuels = $event"
+                                       previousLabel="Anterior"
+                                       nextLabel="Siguiente"></pagination-controls>
+
+                </div>
               </div>
 
             </div>
@@ -268,34 +261,34 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form class="m-3">
+        <form class="m-3" #form="ngForm">
+          <div class="modal-body">
             <div class="row align-items-center mt-4 form-floating mb-3">
-              <input class="form-control" id="dateServiceInput" type="date" />
+              <input class="form-control" id="dateServiceInput" type="date" required/>
               <label for="dateServiceInput">Fecha</label>
             </div>
             <div class="row align-items-center mt-4 form-floating mb-3">
-              <input class="form-control" id="descriptionServiceInput" />
+              <textarea class="form-control" id="descriptionServiceInput" [required]="true"></textarea>
               <label for="descriptionServiceInput">Descripción</label>
             </div>
             <div class="row align-items-center mt-4 form-floating mb-3">
-              <input class="form-control" id="costServiceInput" type="number" />
+              <input class="form-control" id="costServiceInput" type="number" required/>
               <label for="costServiceInput">Costo</label>
             </div>
             <div class="row align-items-center mt-4 form-floating mb-3">
               <input class="form-control" id="kilometerServiceInput" type="number" />
               <label for="kilometerServiceInput">Kilometraje</label>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer no-gutters">
-          <div class="col">
-            <button type="button" class="custom-button return w-100" data-bs-dismiss="modal">Cerrar</button>
           </div>
-          <div class="col">
-            <button class="custom-button submit w-100" id="saveServiceButton" type="button">Guardar</button>
+          <div class="modal-footer no-gutters">
+            <div class="col">
+              <button class="custom-button return w-100" type="button" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            <div class="col">
+              <button class="custom-button submit w-100" id="saveServiceButton" type="submit" [disabled]="!form.valid">Guardar</button>
+            </div>
           </div>
-        </div>
+        </form>
 
       </div>
     </div>

@@ -3,6 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GeneralService } from 'src/services/general.service';
 import { SweetAlertService } from 'src/services/sweet-alert.service';
 
+// Interfaces
+import { Service } from './interfaces/service.interface';
+import { Insurance } from './interfaces/insurance.interface';
+import { Fuel } from './interfaces/fuel.interface';
+
 @Component({
   selector: 'app-datos-solicitud',
   templateUrl: './datos-solicitud.component.html',
@@ -21,15 +26,52 @@ export class DatosSolicitudComponent {
   estado: any;
   estatus: any;
 
+  // start test
+  currentPage = {
+    services: 1,
+    insurances: 1,
+    fuels: 1,
+  };
+
+  services: Service[] = [];
+  insurances: Insurance[] = [];
+  fuels: Fuel[] = [];
+  // end test
+
   constructor(
     private api: GeneralService,
     private router: Router,
     private activo: ActivatedRoute,
-    private alerta: SweetAlertService
-  ) {}
+    private alerta: SweetAlertService,
+  ) {
+    this.generateTestData();
+  }
 
-  ngOnInit() {
+  generateTestData() {
+    for (let i = 0; i < 7; i++) {
+      const service: Service = {
+        date: new Date(),
+        description: `Servicio ${i + 1}`,
+        cost: 500 * (i + 1),
+        kilometers: 10000 * (i + 1),
+      };
 
+      const insurance: Insurance = {
+        date: new Date(),
+        description: `Seguro ${i + 1}`,
+      };
+
+      const fuels: Fuel = {
+        date: new Date(),
+        folio: `ABC1230000${i + 1}`,
+        fuelType: 'gasoline',
+        liters: 50 * (i + 1),
+      };
+
+      this.services.push(service);
+      this.insurances.push(insurance);
+      this.fuels.push(fuels);
+    }
   }
 
   actualizarEnCaptura() {
@@ -53,7 +95,6 @@ export class DatosSolicitudComponent {
       });
     });
   }
-
   actualizarNoEncontrado() {
     this.id = this.activo.snapshot.paramMap.get('id');
     console.log(this.id);
