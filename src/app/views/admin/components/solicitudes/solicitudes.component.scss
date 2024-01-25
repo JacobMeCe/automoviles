@@ -1,9 +1,25 @@
+#buttonSave {
+  margin-right: 5px;
+}
 
-#boton1:hover{
-  transform: scale(1.05);
-  box-shadow: -5px 6px 20px 0px rgba(158, 5, 2, 0.753);
- }
- #boton2:hover{
-  transform: scale(1.05);
-  box-shadow: -5px 6px 20px 0px rgba(2, 65, 158, 0.753);
- }
+#buttonViewList {
+  margin-left: 5px;
+}
+
+#imagePreview {
+  max-width: 500px;
+}
+
+.drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.drop-area.active {
+  border-color: #000;
+}

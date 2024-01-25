@@ -1,6 +1,6 @@
 export interface RespuestaAPI {
-  error : boolean;
+  error: boolean;
   status: number;
   body: any;
-  json:any;
+  json: any;
 }

@@ -7,7 +7,7 @@
 <div class="fondo" style="text-align: center; justify-content: center">
   <h2>Solicitudes</h2>
 
-  <button type="button" class="btn btn-success" (click)="agregarBtn()" >Agregar vehiculo</button>
+  <button type="button" class="btn btn-success" (click)="agregarBtn()">Agregar vehiculo</button>
 
   <section>
     <div class="row">
@@ -17,10 +17,7 @@
           <option selected value="NOMBRE">Departamento</option>
         </select>
         <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="" height="30" width="30" />
-        <input style="
-        width: 20%;
-        border-radius: 0.5vh;
-      " placeholder="Nombre del documento" (keyup)="buscar()" #ctCadena />
+        <input style="width: 20%; border-radius: 0.5vh" placeholder="Nombre del documento" (keyup)="buscar()" #ctCadena />
       </div>
       <div class="col-1"></div>
       <div class="col-12">
@@ -36,37 +33,42 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let datos of data | paginate: { itemsPerPage: 8, currentPage: pages, id:'data'}, let i = index">
+              <tr *ngFor="let datos of data | paginate: { itemsPerPage: 8, currentPage: pages, id: 'data' }; let i = index">
                 <th scope="row">{{ datos.PLACAS }}</th>
-                <td style="width: 30%;"> <img src="{{ datos.IMAGEN }}" style="width: 10%; height: 10%;" ></td>
+                <td style="width: 30%">
+                  <img src="{{ datos.IMAGEN }}" style="width: 10%; height: 10%" />
+                </td>
                 <td>{{ datos.MARCA }}</td>
                 <td>{{ datos.COLOR }}</td>
                 <td>{{ datos.OFICINA }}</td>
-                <td> <button id="boton1" (click)="verDetalles()" style="
-                  background-color: #4c98af; /* Green */
-                  border: none;
-                  color: white;
-                  text-align: center;
-                  text-decoration: none;
-                  display: inline-block;
-                  font-size: 16px;
-                  border-radius: .5vh;
-                  width: 18vh;
-                  height: 5vh;
-                ">
-                Examinar
-              </button></td>
+                <td>
+                  <button
+                    id="saveInput"
+                    (click)="verDetalles()"
+                    style="
+                      background-color: #4c98af; /* Green */
+                      border: none;
+                      color: white;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      font-size: 16px;
+                      border-radius: 0.5vh;
+                      width: 18vh;
+                      height: 5vh;
+                    "
+                  >
+                    Examinar
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
         <div>
-          <pagination-controls id="data" class="my-pagination" (pageChange)="pages = $event" previousLabel="Anterior"
-            nextLabel="Siguiente">
-          </pagination-controls>
+          <pagination-controls id="data" class="my-pagination" (pageChange)="pages = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
         </div>
-        <div style="justify-content: center;text-align: center; width: 100%;">
-        </div>
+        <div style="justify-content: center; text-align: center; width: 100%"></div>
       </div>
       <div class="col-1"></div>
     </div>

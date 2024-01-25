@@ -4,9 +4,9 @@ import { GeneralService } from 'src/services/general.service';
 import { SweetAlertService } from 'src/services/sweet-alert.service';
 
 // Interfaces
-import { Service } from './interfaces/service.interface';
-import { Insurance } from './interfaces/insurance.interface';
-import { Fuel } from './interfaces/fuel.interface';
+import { Service } from '../../../../../interface/datos-solicitud/service.interface';
+import { Insurance } from '../../../../../interface/datos-solicitud/insurance.interface';
+import { Fuel } from '../../../../../interface/datos-solicitud/fuel.interface';
 
 @Component({
   selector: 'app-datos-solicitud',

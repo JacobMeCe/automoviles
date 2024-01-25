@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { RespuestaAPI } from 'src/interface/api-responses.model';
-import { environment } from 'src/environments/environment';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
+import { VehicleForm } from '../interface/solicitudes/vehicleForm.interface';
 
 const API = 'https://api.guarderia.saion.mx';
 
@@ -32,7 +32,7 @@ export class GeneralService {
     return this.http.get<RespuestaAPI>(API + `/autlan/lista/pc`);
   }
   nuevoDoc(form: any) {
-    let direccion = this.url + 'autlan/nuevo/doc';
+    const direccion = this.url + 'autlan/nuevo/doc';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
   eliminarNoticia(id: any) {
@@ -47,12 +47,12 @@ export class GeneralService {
   }
   listaSolicitudes2() {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/lista/solicitudes/progreso`
+      API + `/autlan/lista/solicitudes/progreso`,
     );
   }
   listaSolicitudes3() {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/lista/solicitudes/terminada`
+      API + `/autlan/lista/solicitudes/terminada`,
     );
   }
   estatusSolicitud(estatus: any, id: any) {
@@ -63,22 +63,22 @@ export class GeneralService {
     return this.http.get<RespuestaAPI>(API + `/autlan/solicitudes/${id}`);
   }
   registroPC(form: any) {
-    let direccion = this.url + 'autlan/civil/nuevo';
+    const direccion = this.url + 'autlan/civil/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
 
   registroConfe(form: any) {
-    let direccion = this.url + 'autlan/confe/nuevo';
+    const direccion = this.url + 'autlan/confe/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
 
   solicitudes(form: any) {
-    let direccion = API + '/autlan/rc/nuevo';
+    const direccion = API + '/autlan/rc/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
 
   nuevoeEnlace(form: any) {
-    let direccion = this.url + 'autlan/nuevo/enlace';
+    const direccion = this.url + 'autlan/nuevo/enlace';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
 
@@ -90,12 +90,12 @@ export class GeneralService {
   }
   buscar(columna: string, valor: any) {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/rc/buscar/${columna}/${valor}`
+      API + `/autlan/rc/buscar/${columna}/${valor}`,
     );
   }
   buscarConfe(columna: string, valor: any) {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/consulta/confe/${columna}/${valor}`
+      API + `/autlan/consulta/confe/${columna}/${valor}`,
     );
   }
   buscarPC(columna: string, valor: any) {
@@ -103,7 +103,7 @@ export class GeneralService {
   }
 
   editarDoc(form: any) {
-    let direccion = this.url + 'autlan/actualizar';
+    const direccion = this.url + 'autlan/actualizar';
     return this.http.put<RespuestaAPI>(direccion, form);
   }
 
@@ -136,43 +136,43 @@ export class GeneralService {
 
   obtenerA82018(id: any, inciso: any, ano: any, carpeta: any) {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/${id}/${inciso}/${ano}/${carpeta}`
+      API + `/autlan/docs/A8/${id}/${inciso}/${ano}/${carpeta}`,
     );
   }
 
   obtenerA82019(id: any, inciso: any) {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/2019/${id}/${inciso}`
+      API + `/autlan/docs/A8/2019/${id}/${inciso}`,
     );
   }
 
   obtenerA82020(id: any, inciso: any) {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/2020/${id}/${inciso}`
+      API + `/autlan/docs/A8/2020/${id}/${inciso}`,
     );
   }
 
   obtenerA82021(id: any, inciso: any) {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/2021/${id}/${inciso}`
+      API + `/autlan/docs/A8/2021/${id}/${inciso}`,
     );
   }
 
   obtenerA82022(id: any, inciso: any) {
     return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/2022/${id}/${inciso}`
+      API + `/autlan/docs/A8/2022/${id}/${inciso}`,
     );
   }
   obtenerSUBSIDIO(id: any, inciso: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/docs/A8/${id}/${inciso}`);
   }
   obtenerIdentificadorDocumentos(idEmpresa: any) {
-    let direccion =
+    const direccion =
       API + `/preregistro/obtenerIdentificadorDocumentos/${idEmpresa}`;
     return this.http.get<RespuestaAPI>(direccion);
   }
   obtenerIdentificadorDocumentosAutlan(idEmpresa: any) {
-    let direccion =
+    const direccion =
       API + `/preregistro/obtenerIdentificadorDocumentos/${idEmpresa}`;
     return this.http.get<RespuestaAPI>(direccion);
   }
@@ -201,7 +201,7 @@ export class GeneralService {
   }
 
   nuevaNoticia(form: any) {
-    let direccion = this.url + 'autlan/noticia/nueva';
+    const direccion = this.url + 'autlan/noticia/nueva';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
   verNoticias() {
@@ -237,7 +237,7 @@ export class GeneralService {
   }
 
   verAreas1(area: any, subarea: any) {
-    let direccion = API + `/autlan/datos/tramites/${area}/${subarea}`;
+    const direccion = API + `/autlan/datos/tramites/${area}/${subarea}`;
     return this.http.get<RespuestaAPI>(direccion);
   }
 
@@ -245,12 +245,14 @@ export class GeneralService {
     return this.http.get<RespuestaAPI>(API + `/autlan/id/solicitudes/${id}`);
   }
 
-  datosPUT(estatus: any, id:any) {
-    return this.http.get<RespuestaAPI>(API+`/autlan/solicitudes/rc/${estatus}/${id}`)
+  datosPUT(estatus: any, id: any) {
+    return this.http.get<RespuestaAPI>(
+      API + `/autlan/solicitudes/rc/${estatus}/${id}`,
+    );
   }
 
-  nuevoAutomivil(form: any) {
-    let direccion = this.url + 'autlan/auto/nuevo';
+  nuevoAutomivil(form: VehicleForm) {
+    const direccion = this.url + 'autlan/auto/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
 

@@ -1,5 +1,5 @@
 <p>solicitudes works!</p>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -22,197 +22,91 @@
     <!-- Vendor CSS Files -->
     <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
     <link href="/assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="/assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link
-      href="/assets/vendor/boxicons/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="/assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
     <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
     <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="/assets/css/style.css" rel="stylesheet" />
-
-    <!-- =======================================================
-  * Template Name: Company - v4.7.0
-  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
   </head>
 
   <body>
-    <section
-      style="background-color: rgb(255, 255, 255); margin-top: 100px"
-      id="services"
-      class="services section-bg"
-    >
+    <section style="background-color: rgb(255, 255, 255); margin-top: 100px" id="services" class="services section-bg">
       <section>
         <div class="container animate__animated animate__fadeInDown">
           <div
             class="row justify-content-center"
-            style="
-              border: solid;
-              border-radius: 2vh;
-              border-color: rgb(255, 255, 255);
-              box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753);
-            "
+            style="border: solid; border-radius: 2vh; border-color: rgb(255, 255, 255); box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753)"
           >
             <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-              <form
-                [formGroup]="nuevoPC"
-                (ngSubmit)="postForm(this.nuevoPC.value)"
-                action=""
-              >
+              <form [formGroup]="newVehicleForm" (ngSubmit)="postForm(this.newVehicleForm.value)" action="">
                 <div class="row">
                   <div class="col text-center">
-                    <img
-                      src="https://i.imgur.com/WKrEdF2.png"
-                      height="100"
-                      width="100"
-                      alt=""
-                      style="margin-top: 1vh"
-                    />
+                    <img src="https://i.imgur.com/WKrEdF2.png" height="100" width="100" alt="" style="margin-top: 1vh" />
                     <h1>Generar registro</h1>
-                    <p style="margin-top: 1vh" class="text-h3">
-                      Rellene los datos para completar el registro.
-                    </p>
+                    <p style="margin-top: 1vh" class="text-h3">Rellene los datos del vehículo para completar el registro.</p>
                   </div>
                 </div>
 
-                <div class="row align-items-center mt-4 form-floating mb-3">
-                  <input
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="No. Folio"
-                    formControlName="PLACAS"
-                  />
-                  <label for="floatingInput">Placas</label>
-                </div>
+                <div class="mt-4 mb-5">
+                  <div class="row form-floating mb-4">
+                    <input id="inputLicensePlate" class="form-control" placeholder="" formControlName="PLATES" />
+                    <label for="inputLicensePlate">Placas</label>
+                  </div>
 
-                <div class="row align-items-center mt-4 form-floating mb-3">
-                  <input
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="No. Folio"
-                    formControlName="TIPO"
-                  />
-                  <label for="floatingInput">Tipo de vehiculo</label>
-                </div>
+                  <div class="row form-floating mb-4">
+                    <input id="inputType" class="form-control" placeholder="" formControlName="TYPE" />
+                    <label for="inputType">Tipo de Vehículo</label>
+                  </div>
 
-                <div class="row align-items-center mt-4 form-floating mb-3">
-                  <input
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="name@example.com"
-                    formControlName="MARCA"
-                  />
-                  <label for="floatingInput">Marca vehiculo</label>
-                </div>
+                  <div class="row form-floating mb-4">
+                    <input id="inputBrand" class="form-control" placeholder="" formControlName="BRAND" />
+                    <label for="inputBrand">Marca</label>
+                  </div>
 
-                <div class="row align-items-center mt-4 form-floating mb-3">
-                  <input
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="name@example.com"
-                    formControlName="SUBMARCA"
-                  />
-                  <label for="floatingInput">Sub-Marca vehiculo</label>
-                </div>
+                  <div class="row form-floating mb-4">
+                    <input id="inputSubBrand" class="form-control" placeholder="" formControlName="SUB_BRAND" />
+                    <label for="inputSubBrand">Sub-Marca</label>
+                  </div>
 
-                <div class="row align-items-center mt-4 form-floating mb-3">
-                  <input
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="name@example.com"
-                    formControlName="SERIAL"
-                  />
-                  <label for="floatingInput">Numero de serie</label>
-                </div>
+                  <div class="row form-floating mb-4">
+                    <input id="inputSerial" class="form-control" placeholder="" formControlName="SERIAL_NUMBER" />
+                    <label for="inputSerial">Número de Serie</label>
+                  </div>
 
-                <div class="row align-items-center mt-4 form-floating mb-3">
-                  <input
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="name@example.com"
-                    formControlName="COLOR"
-                  />
-                  <label for="floatingInput">Color</label>
-                </div>
+                  <div class="row form-floating mb-4">
+                    <input id="inputColor" class="form-control" placeholder="" formControlName="COLOR" />
+                    <label for="inputColor">Color</label>
+                  </div>
 
-                <div class="row align-items-center mt-4 form-floating mb-3">
-                  <input
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="name@example.com"
-                    formControlName="OFICINA"
-                  />
-                  <label for="floatingInput">Oficina</label>
-                </div>
+                  <div class="row form-floating mb-4">
+                    <input id="inputOffice" class="form-control" placeholder="" formControlName="DEPARTMENT" />
+                    <label for="inputOffice">Departamento</label>
+                  </div>
 
-                <br><label style="margin-top: 2%; margin-right: 1%; font-weight: bold; font-weight: bold;">Seleccione la
-                  imagen a subir</label>
-                <br><input type="file" style="margin-top: 1%;" formControlName="IMAGEN"
-                  multiple>
-    
-                <i class="bi bi-check-circle-fill" style="font-size: 30px; color: #00B59C;"
-                  *ngIf="!subiendoDocumento && urlDocumento !== '' "></i>
-    
+                  <!-- Upload image -->
+                  <div class="row form-floating mb-4">
+                    <div class="drop-area" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+                      <p id="dropTitle" class="mb-3">Arrastre y suelte una imagen o haga clic para seleccionar un archivo</p>
+                      <img id="imagePreview" class="mb-3" />
+                      <div class="row">
+                        <input type="file" accept="image/*" name="" id="input-file" (change)="onFileSelected($event)" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--
+                <i class="bi bi-check-circle-fill" *ngIf="!subiendoDocumento && urlDocumento !== ''"></i>
+
                 <div class="spinner-border text-primary" role="status" *ngIf="subiendoDocumento"></div>
+                --></div>
 
-                <div
-                  style="
-                    width: 100%;
-                    justify-content: center;
-                    text-align: center;
-                  "
-                >
-                  <button
-                    id="boton1"
-                    style="
-                      width: 18%;
-                      color: aliceblue;
-                      background-color: rgb(188, 8, 8);
-                      border-radius: 0.5vh;
-                      border: solid;
-                      border-color: rgb(188, 8, 8);
-                      margin-left: 5vh;
-                      height: 4vh;
-                    "
-                  >
-                    Guardar
-                  </button>
-                  <button
-                    id="boton2"
-                    (click)="verDetalles()"
-                    style="
-                      width: 18%;
-                      color: aliceblue;
-                      background-color: rgb(6, 46, 132);
-                      border-radius: 0.5vh;
-                      border: solid;
-                      border-color: rgb(6, 46, 132);
-                      margin-left: 5vh;
-                      height: 4vh;
-                      margin-bottom: 5vh;
-                    "
-                  >
-                    Ver lista
-                  </button>
+                <div class="row mb-5">
+                  <button id="buttonSave" class="col custom-button submit" type="submit">Guardar</button>
+                  <button id="buttonViewList" class="col custom-button return" (click)="viewRegistersList()">Ver lista</button>
                 </div>
               </form>
             </div>
@@ -222,11 +116,9 @@
     </section>
     <!-- End Services Section -->
 
-    <a
-      href="#"
-      class="back-to-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+      <i class="bi bi-arrow-up-short"></i>
+    </a>
 
     <!-- Vendor JS Files -->
     <script src="/assets/vendor/aos/aos.js"></script>

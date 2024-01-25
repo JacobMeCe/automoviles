@@ -1,4 +1,3 @@
-
 export const environment = {
   firebase: {
     projectId: 'guarderia-bdf9f',
@@ -10,6 +9,5 @@ export const environment = {
     measurementId: 'G-1W0NN5ZFKH',
   },
   production: false,
-  apiUrl:  'https://api.movil.saion.mx',
-
+  apiUrl: 'https://api.movil.saion.mx',
 };

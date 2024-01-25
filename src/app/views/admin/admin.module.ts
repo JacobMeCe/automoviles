@@ -11,10 +11,10 @@ import { ActualizarComponent } from 'src/app/shared/components/footer-admin/actu
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { ListaComponent } from './components/solicitudes/lista/lista.component';
 import { EstatusComponent } from './components/solicitudes/lista/estatus/estatus.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogoComponent } from 'src/app/shared/components/sidenav-admin/logo/logo.component';
-import { CommonModule } from '@angular/common';
-import { DatosSolicitudComponent } from './components/datos-solicitud/datos-solicitud.component'
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { DatosSolicitudComponent } from './components/datos-solicitud/datos-solicitud.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -28,9 +28,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EstatusComponent,
     LogoComponent,
     DatosSolicitudComponent,
-
   ],
 
-  imports: [AdminRoutingModule, SharedModule, ReactiveFormsModule, CommonModule, NgxPaginationModule, FormsModule]
+  imports: [
+    AdminRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    CommonModule,
+    NgxPaginationModule,
+    FormsModule,
+    NgOptimizedImage,
+  ],
 })
 export class AdminModule {}
