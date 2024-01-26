@@ -54,41 +54,29 @@ export class SolicitudesComponent {
         'Registro de datos',
         '¿Desea enviar los datos de su registro?',
       )
-      .then((res: any) => {
+      .then(async (res: any) => {
         if (!res.isConfirmed) return;
 
-        // imprimir formulario
-        console.log(form);
+        const imagePath: string[] = await this.store.uploadImage(
+          this.fileSelected,
+          form.PLATES,
+        );
 
-        const formData = new FormData();
+        form.IMAGE = imagePath[0];
 
-        Object.keys(form).forEach(async (key) => {
-          formData.append(key, form[key]);
-
-          if (key === 'IMAGE') {
-            const imageReferences = await this.store.uploadImage(
-              this.fileSelected,
-              form['PLATES'],
-            );
-            // save image path in the form
-            formData.set(key, imageReferences[0]);
-          }
-        });
-
-        /*
-        this.api.nuevoAutomivil(formData).subscribe(() => {
+        this.api.nuevoAutomivil(form).subscribe(() => {
           this.alerts
             .realizado('Completado', 'Se ha enviado la solicitud con exito')
             .then((res: any) => {
               if (res.isConfirmed) {
                 this.router.navigate(['admin/lista-solicitudes/']);
               }
+            })
+            .catch((e) => {
+              this.alerts.alertaError('Ups', 'Error de solicitud');
+              console.log(e);
             });
-         */
-      })
-      .catch((e) => {
-        this.alerts.alertaError('Ups', 'Error de solicitud');
-        console.log(e);
+        });
       });
   }
 
