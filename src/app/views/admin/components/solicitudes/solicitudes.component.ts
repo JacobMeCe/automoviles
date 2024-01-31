@@ -64,7 +64,7 @@ export class SolicitudesComponent {
 
         form.IMAGE = imagePath[0];
 
-        this.api.nuevoAutomivil(form).subscribe(() => {
+        this.api.newVehicle(form).subscribe(() => {
           this.alerts
             .realizado('Completado', 'Se ha enviado la solicitud con exito')
             .then((res: any) => {
@@ -106,23 +106,42 @@ export class SolicitudesComponent {
 
   onDragLeave(event: any): void {
     event.preventDefault();
+    if (this.fileSelected) {
+      this.changeDropTitle(this.fileSelected.name);
+      return;
+    }
     this.changeDropTitle('Arrastre o suelte una imagen');
   }
 
   onDrop(event: any): void {
     event.preventDefault();
-    const file: File = event.dataTransfer.files[0];
-    if (file) {
+    const files: File[] = event.dataTransfer.files;
+    if (files.length > 1) {
+      this.alerts.alertaError(
+        'Error de imagen',
+        'Solo puede seleccionar una imagen',
+      );
+      this.clearImage();
+      this.changeDropTitle(
+        'Arrastre y suelte una imagen o haga clic para seleccionar un archivo',
+      );
+      return;
+    }
+
+    const imageFile: File = files[0];
+
+    if (imageFile.type.includes('image')) {
       const image = this.renderer.selectRootElement('#imagePreview');
-      console.log(file);
-      this.previewImage(file, image);
+      this.previewImage(imageFile, image);
     } else {
       this.alerts.alertaError(
         'Error de imagen',
         'El archivo seleccionado no es una imagen',
       );
       this.clearImage();
-      this.changeDropTitle('Arrastre o suelte una imagen');
+      this.changeDropTitle(
+        'Arrastre y suelte una imagen o haga clic para seleccionar un archivo',
+      );
     }
   }
 
@@ -146,7 +165,6 @@ export class SolicitudesComponent {
 
       reader.readAsDataURL(file);
       this.changeDropTitle(file.name);
-      //this.hideDropTitle();
     } else {
       this.clearImage();
     }
@@ -158,8 +176,9 @@ export class SolicitudesComponent {
   clearImage(): void {
     const image = this.renderer.selectRootElement('#imagePreview');
     this.renderer.setAttribute(image, 'src', '');
-    this.showDropTitle();
-    this.changeDropTitle('Arrastre o suelte una imagen');
+    this.changeDropTitle(
+      'Arrastre y suelte una imagen o haga clic para seleccionar un archivo',
+    );
   }
 
   /**
@@ -169,23 +188,5 @@ export class SolicitudesComponent {
   changeDropTitle(title: string): void {
     const contentTitle = this.renderer.selectRootElement('#dropTitle');
     this.renderer.setProperty(contentTitle, 'textContent', title);
-  }
-
-  /**
-   * Function to hide title
-   */
-  hideDropTitle(): void {
-    const contentTitle = this.renderer.selectRootElement('#dropTitle');
-    if (contentTitle) {
-      contentTitle.style.display = 'none';
-    }
-  }
-
-  /**
-   * Function to show title
-   */
-  showDropTitle(): void {
-    const contentTitle = this.renderer.selectRootElement('#dropTitle');
-    this.renderer.setStyle(contentTitle, 'display', 'block');
   }
 }

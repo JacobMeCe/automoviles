@@ -251,7 +251,7 @@ export class GeneralService {
     );
   }
 
-  nuevoAutomivil(form: VehicleForm) {
+  newVehicle(form: VehicleForm) {
     const direccion = this.url + 'autlan/auto/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
