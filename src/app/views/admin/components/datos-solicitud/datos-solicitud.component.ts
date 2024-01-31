@@ -36,6 +36,7 @@ export class DatosSolicitudComponent {
   services: Service[] = [];
   insurances: Insurance[] = [];
   fuels: Fuel[] = [];
+
   // end test
 
   constructor(
@@ -43,36 +44,7 @@ export class DatosSolicitudComponent {
     private router: Router,
     private activo: ActivatedRoute,
     private alerta: SweetAlertService,
-  ) {
-    this.generateTestData();
-  }
-
-  generateTestData() {
-    for (let i = 0; i < 7; i++) {
-      const service: Service = {
-        date: new Date(),
-        description: `Servicio ${i + 1}`,
-        cost: 500 * (i + 1),
-        kilometers: 10000 * (i + 1),
-      };
-
-      const insurance: Insurance = {
-        date: new Date(),
-        description: `Seguro ${i + 1}`,
-      };
-
-      const fuels: Fuel = {
-        date: new Date(),
-        folio: `ABC1230000${i + 1}`,
-        fuelType: 'gasoline',
-        liters: 50 * (i + 1),
-      };
-
-      this.services.push(service);
-      this.insurances.push(insurance);
-      this.fuels.push(fuels);
-    }
-  }
+  ) {}
 
   actualizarEnCaptura() {
     this.id = this.activo.snapshot.paramMap.get('id');
@@ -95,6 +67,7 @@ export class DatosSolicitudComponent {
       });
     });
   }
+
   actualizarNoEncontrado() {
     this.id = this.activo.snapshot.paramMap.get('id');
     console.log(this.id);
