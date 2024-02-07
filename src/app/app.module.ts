@@ -20,7 +20,7 @@ import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+//import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [AppComponent, AdminLayoutComponent],
@@ -37,7 +37,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
-    CKEditorModule,
+    //CKEditorModule,
   ],
   providers: [
     /*JsonService*/ DatePipe,
