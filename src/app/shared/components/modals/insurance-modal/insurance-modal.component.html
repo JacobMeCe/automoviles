@@ -1,0 +1,32 @@
+<div class="modal fade" id="registerInsuranceModal" tabindex="-1" aria-labelledby="registerInsuranceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Registrar Aseguranza</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="m-3">
+          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
+            <input class="form-control" id="dateInsuranceInput" type="date" required placeholder="" />
+            <label for="dateInsuranceInput">Fecha</label>
+          </div>
+          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
+            <textarea class="form-control h-200" id="descriptionInsuranceInput" required placeholder=""></textarea>
+            <label for="descriptionInsuranceInput">Descripción</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer no-gutters">
+        <div class="col">
+          <button type="button" class="custom-button return w-100" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        <div class="col">
+          <button class="custom-button submit w-100" id="saveInsuranceButton" type="button">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

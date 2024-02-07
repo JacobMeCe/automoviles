@@ -1,0 +1,32 @@
+<div class="modal fade" id="registerFuelModal" tabindex="-1" aria-labelledby="registerFuelModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Registrar Combustible</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="m-3">
+          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
+            <input class="form-control" id="dateFuelInput" type="date" required placeholder="" />
+            <label for="dateFuelInput">Fecha</label>
+          </div>
+          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
+            <input class="form-control" id="kilometerFuelInput" type="number" required placeholder="" />
+            <label for="kilometerFuelInput">Kilometraje</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer no-gutters">
+        <div class="col">
+          <button type="button" class="custom-button return w-100" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        <div class="col">
+          <button class="custom-button submit" id="saveFuelButton" type="button">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

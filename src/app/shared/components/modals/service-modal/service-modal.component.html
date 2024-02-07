@@ -1,0 +1,40 @@
+<div class="modal fade" id="registerServiceModal" tabindex="-1" aria-labelledby="registerServiceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Registrar Servicio</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="m-3">
+        <div class="modal-body">
+          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
+            <input id="dateServiceInput" class="form-control" type="date" required placeholder="" />
+            <label for="dateServiceInput">Fecha</label>
+          </div>
+          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
+            <textarea class="form-control h-200" id="descriptionServiceInput" required placeholder=""></textarea>
+            <label for="descriptionServiceInput">Descripción</label>
+          </div>
+          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
+            <input class="form-control" id="costServiceInput" type="number" required placeholder="" />
+            <label for="costServiceInput">Costo</label>
+          </div>
+          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
+            <input class="form-control" id="kilometerServiceInput" type="number" placeholder="" />
+            <label for="kilometerServiceInput">Kilometraje</label>
+          </div>
+        </div>
+        <div class="modal-footer no-gutters">
+          <div class="col">
+            <button class="custom-button return w-100" type="button" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+          <div class="col">
+            <button class="custom-button submit w-100" id="saveServiceButton" type="submit">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
