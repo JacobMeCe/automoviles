@@ -5,6 +5,7 @@ import { GeneralService } from 'src/services/general.service';
 import { SweetAlertService } from 'src/services/sweet-alert.service';
 import { VehicleForm } from '../../../../../interface/solicitudes/vehicleForm.interface';
 import { FirebaseService } from '../../../../../services/firebase.service';
+import departments from '../../../../../utils/departments.json';
 
 @Component({
   selector: 'app-solicitudes',
@@ -12,6 +13,7 @@ import { FirebaseService } from '../../../../../services/firebase.service';
   styleUrls: ['./solicitudes.component.scss'],
 })
 export class SolicitudesComponent {
+  departments = departments;
   fileSelected: File;
   newVehicleForm: FormGroup = new FormGroup({
     PLATES: new FormControl('', Validators.required),
