@@ -16,6 +16,9 @@ import { LogoComponent } from 'src/app/shared/components/sidenav-admin/logo/logo
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { DatosSolicitudComponent } from './components/datos-solicitud/datos-solicitud.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ServiceModalComponent } from './components/datos-solicitud/modals/service-modal/service-modal.component';
+import { InsuranceModalComponent } from './components/datos-solicitud/modals/insurance-modal/insurance-modal.component';
+import { FuelModalComponent } from './components/datos-solicitud/modals/fuel-modal/fuel-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EstatusComponent,
     LogoComponent,
     DatosSolicitudComponent,
+    ServiceModalComponent,
+    InsuranceModalComponent,
+    FuelModalComponent,
   ],
 
   imports: [

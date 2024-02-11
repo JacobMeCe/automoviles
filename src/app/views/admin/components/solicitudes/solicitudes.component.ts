@@ -34,7 +34,19 @@ export class SolicitudesComponent {
     private renderer: Renderer2,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Change all inputs to uppercase
+    this.newVehicleForm.valueChanges.subscribe((value) => {
+      for (const field in value) {
+        if (typeof value[field] === 'string' && field !== 'DEPARTMENT') {
+          const control = this.newVehicleForm.get(field);
+          if (control) {
+            control.setValue(value[field].toUpperCase(), { emitEvent: false });
+          }
+        }
+      }
+    });
+  }
 
   /**
    * Function to post form
@@ -59,12 +71,14 @@ export class SolicitudesComponent {
       .then(async (res: any) => {
         if (!res.isConfirmed) return;
 
-        const imagePath: string[] = await this.store.uploadImage(
+        form.IMAGE = await this.store.uploadImage(
           this.fileSelected,
           form.PLATES,
         );
 
-        form.IMAGE = imagePath[0];
+        console.log(form);
+
+        /*
 
         this.api.newVehicle(form).subscribe(() => {
           this.alerts
@@ -79,6 +93,8 @@ export class SolicitudesComponent {
               console.log(e);
             });
         });
+
+         */
       });
   }
 

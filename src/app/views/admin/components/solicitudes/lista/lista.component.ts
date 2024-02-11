@@ -18,12 +18,15 @@ export class ListaComponent {
   conteo2: any;
   reponsable: any;
   datos: any;
-  pages: number=1;
+  pages: number = 1;
 
   @ViewChild('cbCampo') cbCampo: ElementRef;
   @ViewChild('ctCadena') ctCadena: ElementRef;
 
-  constructor(private api: GeneralService, private router: Router) {}
+  constructor(
+    private api: GeneralService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.reponsable = localStorage.getItem('tipo');
@@ -31,19 +34,16 @@ export class ListaComponent {
     this.spinner = true;
     this.api.listaAutomoviles().subscribe((res: any) => {
       this.data = res.body;
-      console.log(this.data);
 
       this.conteo = res.body.length;
       // console.log(this.conteo);
 
       this.spinner = false;
     });
-
-
   }
 
   verDetalles() {
-    this.router.navigate(['admin/datos-solitud',1]);
+    this.router.navigate(['admin/datos-solitud', 1]);
   }
 
   verVolver() {
@@ -51,8 +51,8 @@ export class ListaComponent {
   }
 
   buscar(): void {
-    let columName: string = this.cbCampo.nativeElement.value;
-    let value: any = this.ctCadena.nativeElement.value;
+    const columName: string = this.cbCampo.nativeElement.value;
+    const value: any = this.ctCadena.nativeElement.value;
 
     if (value.length) {
       // console.log('entra buscar');
@@ -63,25 +63,24 @@ export class ListaComponent {
     } else {
       this.reponsable = localStorage.getItem('tipo');
 
-    this.spinner = true;
-    this.api.listaSolicitudes().subscribe((res: any) => {
-      this.data = res.body;
-      // console.log(this.data);
+      this.spinner = true;
+      this.api.listaSolicitudes().subscribe((res: any) => {
+        this.data = res.body;
+        // console.log(this.data);
 
-      this.conteo = res.body.length;
-      // console.log(this.conteo);
+        this.conteo = res.body.length;
+        // console.log(this.conteo);
 
-      this.spinner = false;
-    });
+        this.spinner = false;
+      });
     }
   }
 
-  cambio(){
-    this.pages=1
+  cambio() {
+    this.pages = 1;
   }
 
   agregarBtn() {
     this.router.navigate(['admin/solicitudes']);
   }
-
 }

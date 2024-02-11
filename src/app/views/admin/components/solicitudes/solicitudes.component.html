@@ -20,15 +20,6 @@
     />
 
     <!-- Vendor CSS Files -->
-    <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="/assets/css/style.css" rel="stylesheet" />
   </head>
@@ -81,7 +72,7 @@
 
                   <div class="row form-floating mb-4">
                     <select id="inputOffice" class="form-control" formControlName="DEPARTMENT">
-                      <option *ngFor="let department of departments" [value]="department">{{ department.name }}</option>
+                      <option *ngFor="let department of departments" [value]="department.name">{{ department.id + ': ' + department.name }}</option>
                     </select>
                     <label for="inputOffice">Departamento</label>
                   </div>
@@ -102,12 +93,6 @@
                       />
                     </div>
                   </div>
-
-                  <!--
-            <i class="bi bi-check-circle-fill" *ngIf="!subiendoDocumento && urlDocumento !== ''"></i>
-
-            <div class="spinner-border text-primary" role="status" *ngIf="subiendoDocumento"></div>
-            -->
                 </div>
 
                 <div class="row mb-5">

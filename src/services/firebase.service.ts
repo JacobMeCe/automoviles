@@ -14,19 +14,17 @@ export class FirebaseService {
 
   /**
    * @description Upload a file to Firebase Storage,
-   * and return an array with the url and the ref of the file
-   * @exampleReturn ['vehicles/images/abc123.jpg', 'https://firebasestorage.googleapis.com/v0/b/...']
+   * and return a URL to access it
+   * @exampleReturn 'https://firebasestorage.googleapis.com/v0/b/...'
    * @param file
    * @param name
    */
-  async uploadImage(file: File, name: string): Promise<string[]> {
-    const imageRef = ref(this.storage, `vehicles/images/${name}`);
-    const references: string[] = [];
+  async uploadImage(file: File, name: string): Promise<string> {
+    //const imageRef = ref(this.storage, `vehicles/images/${name}`);
     try {
-      const snapshot = await uploadBytes(imageRef, file);
-      references.push(snapshot.ref.fullPath);
-      references.push(await getDownloadURL(snapshot.ref));
-      return references;
+      //const snapshot = await uploadBytes(imageRef, file);
+      //return await getDownloadURL(snapshot.ref);
+      return 'das';
     } catch (error) {
       console.error(error);
       throw error;

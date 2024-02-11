@@ -3,10 +3,11 @@ export interface Usuarios {
   DES_NOMBRE: string;
 }
 
-export interface loginI{
+export interface loginI {
   usuario: string;
   contrasena: string;
 }
-export interface token{
-  token:string
+
+export interface token {
+  token: string;
 }

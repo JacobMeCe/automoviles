@@ -1,4 +1,4 @@
-a{
+a {
   color: aqua;
 }
 
@@ -9,6 +9,8 @@ $return-button-bg: rgb(158, 5, 2);
 $submit-button-bg: rgb(6, 46, 132);
 $return-button-hover-shadow: rgba(158, 5, 2, 0.753);
 $submit-button-hover-shadow: rgba(2, 65, 158, 0.753);
+$inf-button-bg: rgb(76, 152, 175);
+$inf-button-hover-shadow: rgba(76, 152, 175, 0.753);
 
 .custom-input {
   height: 6vh;
@@ -41,6 +43,16 @@ $submit-button-hover-shadow: rgba(2, 65, 158, 0.753);
     &:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 20px 0 $return-button-hover-shadow;
+    }
+  }
+
+  &.inf {
+    background-color: $inf-button-bg;
+    border-color: $inf-button-bg;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px 0 $inf-button-hover-shadow;
     }
   }
 }
