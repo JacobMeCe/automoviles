@@ -20,6 +20,8 @@ export class ListaComponent {
   datos: any;
   pages: number = 1;
 
+  userType: string = localStorage.getItem('tipo') || '';
+
   @ViewChild('cbCampo') cbCampo: ElementRef;
   @ViewChild('ctCadena') ctCadena: ElementRef;
 
@@ -46,7 +48,7 @@ export class ListaComponent {
     const columName: string = this.cbCampo.nativeElement.value;
     const value: any = this.ctCadena.nativeElement.value;
 
-    if (value.length) {
+    if (value !== '') {
       this.api.buscar(columName, value).subscribe((res: any) => {
         this.data = res.body;
       });
@@ -54,7 +56,7 @@ export class ListaComponent {
       this.reponsable = localStorage.getItem('tipo');
 
       this.spinner = true;
-      this.api.listaSolicitudes().subscribe((res: any) => {
+      this.api.listaAutomoviles().subscribe((res: any) => {
         this.data = res.body;
         // console.log(this.data);
 

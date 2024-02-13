@@ -38,11 +38,11 @@
             <!-- form -->
             <form [formGroup]="vehicleForm">
               <div>
-                <div class="row mt-4">
-                  <img height="100" width="100" alt="" />
-                </div>
                 <div class="text-center mt-4">
-                  <button class="custom-button submit w-25" id="searchButton" type="button" (click)="navigateToEdit()">Editar</button>
+                  <img id="imagePreview" height="100" width="100" alt="" />
+                </div>
+                <div class="text-center mt-4" *ngIf="userType === 'Admin'">
+                  <button class="custom-button inf w-25" id="searchButton" type="button" (click)="navigateToEdit()">Editar</button>
                 </div>
                 <div class="row no-gutters form-floating">
                   <div class="col-12 form-floating mt-4 col-md mr-2">
@@ -63,17 +63,17 @@
                     <input class="custom-input form-control" id="carModelInput" readonly placeholder="" formControlName="SUB_BRAND" />
                     <label for="carModelInput">Sub-Marca vehiculo</label>
                   </div>
-                  <div class="col-12 form-floating mt-4 col-md">
+                  <div class="col-12 form-floating mt-4 col-md mr-2">
                     <input class="custom-input form-control" id="carColorInput" readonly placeholder="" formControlName="COLOR" />
                     <label for="carColorInput">Color</label>
                   </div>
-                </div>
-                <div class="row no-gutters form-floating">
-                  <div class="col-12 form-floating mt-4 col-md mr-2">
+                  <div class="col-12 form-floating mt-4 col-md">
                     <input class="custom-input form-control" id="carSerialNumberInput" readonly placeholder="" formControlName="SERIAL_NUMBER" />
                     <label for="carSerialNumberInput">Numero de serie</label>
                   </div>
-                  <div class="col-12 form-floating mt-4 col-md mr-2">
+                </div>
+                <div class="row no-gutters form-floating">
+                  <div class="col-12 form-floating mt-4 col-md">
                     <input class="custom-input form-control" id="carDepartmentInput" readonly placeholder="" formControlName="DEPARTMENT" />
                     <label for="carDepartmentInput">Departamento</label>
                   </div>
@@ -83,20 +83,20 @@
 
             <!-- buttons -->
             <div class="row no-gutters form-floating mt-4">
-              <div class="col-12 col-md mr-2 mt-2">
+              <div class="col-12 col-md mr-2 mt-2" *ngIf="userType === 'Admin'">
                 <button class="custom-button submit" id="registerServiceButton" type="button" data-bs-toggle="modal" data-bs-target="#registerServiceModal">Registrar Servicio</button>
               </div>
-              <div class="col-12 col-md mr-2 mt-2">
+              <div class="col-12 col-md mr-2 mt-2" *ngIf="userType === 'Admin'">
                 <button class="custom-button submit" id="registerInsuranceButton" type="button" data-bs-toggle="modal" data-bs-target="#registerInsuranceModal">Registrar Aseguranza</button>
               </div>
-              <div class="col-12 col-md mt-2">
+              <div class="col-12 col-md mt-2" *ngIf="userType === 'Admin'">
                 <button class="custom-button submit" id="registerFuelButton" type="button" data-bs-toggle="modal" data-bs-target="#registerFuelModal">Registrar Combustible</button>
               </div>
             </div>
 
             <!-- table services -->
             <div class="mt-4">
-              <div class="row no-gutters form-floating">
+              <div class="row no-gutters form-floating" *ngIf="userType === 'Admin'">
                 <div class="col mt-4">
                   <h3 class="text-center">Servicios</h3>
                   <table class="table table-striped table-hover text-center table-bordered">
@@ -124,7 +124,7 @@
               </div>
 
               <!-- table insurances -->
-              <div class="row no-gutters form-floating">
+              <div class="row no-gutters form-floating" *ngIf="userType === 'Admin'">
                 <div class="col mt-4">
                   <h3 class="text-center">Aseguranzas</h3>
                   <table class="table table-striped table-hover text-center table-bordered">
@@ -150,7 +150,7 @@
               </div>
 
               <!-- table fuel -->
-              <div class="row no-gutters form-floating">
+              <div class="row no-gutters form-floating" *ngIf="userType === 'Admin'">
                 <div class="col mt-4">
                   <h3 class="text-center">Combustible</h3>
                   <table class="table table-striped table-hover text-center table-bordered">
@@ -182,16 +182,16 @@
 
             <!-- return button -->
             <div class="row justify-content-center mt-4 mb-5">
-              <button class="custom-button return w-auto" id="returnButton" type="button" (click)="verVolver()">Volver</button>
+              <button class="custom-button return w-25" id="returnButton" type="button" (click)="verVolver()">Volver</button>
             </div>
           </div>
         </div>
       </div>
 
       <!-- modals -->
-      <app-service-modal></app-service-modal>
-      <app-insurance-modal></app-insurance-modal>
-      <app-fuel-modal></app-fuel-modal>
+      <app-service-modal *ngIf="userType === 'Admin'" />
+      <app-insurance-modal *ngIf="userType === 'Admin'" />
+      <app-fuel-modal *ngIf="userType === 'Admin'" />
     </section>
   </body>
 </html>

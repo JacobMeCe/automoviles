@@ -17,6 +17,7 @@ export class DatosSolicitudComponent {
   data: any;
   id: any;
   estatus: any;
+  userType: string = localStorage.getItem('tipo') || '';
 
   vehicleForm = VehicleForm;
 
@@ -77,5 +78,7 @@ export class DatosSolicitudComponent {
     this.router.navigate(['admin/lista-solicitudes']);
   }
 
-  navigateToEdit() {}
+  navigateToEdit() {
+    this.router.navigate(['admin/solicitudes']);
+  }
 }

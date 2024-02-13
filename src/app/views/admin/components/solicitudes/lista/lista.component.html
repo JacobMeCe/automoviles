@@ -30,7 +30,7 @@
           <div class="text-center mb-4">
             <h1>Solicitudes</h1>
           </div>
-          <div class="text-center mb-4">
+          <div class="text-center mb-4" *ngIf="userType === 'Admin'">
             <button type="button" class="custom-button submit w-auto" (click)="navigateToVehicleRegister()">Agregar vehiculo</button>
           </div>
 
