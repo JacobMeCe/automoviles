@@ -1,11 +1,11 @@
 import { Component, Renderer2 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GeneralService } from 'src/services/general.service';
 import { SweetAlertService } from 'src/services/sweet-alert.service';
-import { VehicleForm } from '../../../../../interface/solicitudes/vehicleForm.interface';
+import { VehicleForm } from '../../../../../forms/vehicleForm';
 import { FirebaseService } from '../../../../../services/firebase.service';
 import departments from '../../../../../utils/departments.json';
+import { Vehicle } from '../../../../../interface/solicitudes/vehicle.interface';
 
 @Component({
   selector: 'app-solicitudes',
@@ -15,16 +15,7 @@ import departments from '../../../../../utils/departments.json';
 export class SolicitudesComponent {
   departments = departments;
   fileSelected: File;
-  newVehicleForm: FormGroup = new FormGroup({
-    PLATES: new FormControl('', Validators.required),
-    TYPE: new FormControl('', Validators.required),
-    BRAND: new FormControl('', Validators.required),
-    SUB_BRAND: new FormControl('', Validators.required),
-    SERIAL_NUMBER: new FormControl('', Validators.required),
-    COLOR: new FormControl('', Validators.required),
-    DEPARTMENT: new FormControl('', Validators.required),
-    IMAGE: new FormControl('', Validators.required),
-  });
+  newVehicleForm = VehicleForm;
 
   constructor(
     private api: GeneralService,
@@ -54,7 +45,7 @@ export class SolicitudesComponent {
    * and show a confirmation alert
    * @param form
    */
-  postForm(form: VehicleForm): void {
+  postForm(form: Vehicle): void {
     if (this.newVehicleForm.invalid) {
       this.alerts.alertaError(
         'Error de solicitud',

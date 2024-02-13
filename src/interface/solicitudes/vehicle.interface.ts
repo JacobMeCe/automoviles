@@ -1,5 +1,6 @@
-export interface VehicleForm {
+export interface Vehicle {
   [key: string]: string;
+
   PLATES: string;
   TYPE: string;
   BRAND: string;

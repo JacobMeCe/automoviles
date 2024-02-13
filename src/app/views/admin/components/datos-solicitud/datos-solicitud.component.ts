@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GeneralService } from 'src/services/general.service';
 import { SweetAlertService } from 'src/services/sweet-alert.service';
 
-// Interfaces
 import { Service } from '../../../../../interface/datos-solicitud/service.interface';
 import { Insurance } from '../../../../../interface/datos-solicitud/insurance.interface';
 import { Fuel } from '../../../../../interface/datos-solicitud/fuel.interface';
+import { VehicleForm } from '../../../../../forms/vehicleForm';
 
 @Component({
   selector: 'app-datos-solicitud',
@@ -16,15 +16,9 @@ import { Fuel } from '../../../../../interface/datos-solicitud/fuel.interface';
 export class DatosSolicitudComponent {
   data: any;
   id: any;
-  folio = '';
-  nombre = '';
-  apellido_pat = '';
-  apellido_mat = '';
-  fecha_naciemiento = '';
-  observaciones = '';
-  busqueda: any;
-  estado: any;
   estatus: any;
+
+  vehicleForm = VehicleForm;
 
   // start test
   currentPage = {
@@ -82,4 +76,6 @@ export class DatosSolicitudComponent {
   verVolver() {
     this.router.navigate(['admin/lista-solicitudes']);
   }
+
+  navigateToEdit() {}
 }

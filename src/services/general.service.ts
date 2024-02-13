@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RespuestaAPI } from 'src/interface/api-responses.model';
-import { Subject } from 'rxjs';
-import { VehicleForm } from '../interface/solicitudes/vehicleForm.interface';
+import { Observable, Subject } from 'rxjs';
+import { Vehicle } from '../interface/solicitudes/vehicle.interface';
 
 const API = 'https://api.guarderia.saion.mx';
 
@@ -24,6 +24,7 @@ export class GeneralService {
   filtropc(razon: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/filtro/${razon}`);
   }
+
   filtroConfe(razon: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/confe/${razon}`);
   }
@@ -31,13 +32,16 @@ export class GeneralService {
   listaPC() {
     return this.http.get<RespuestaAPI>(API + `/autlan/lista/pc`);
   }
+
   nuevoDoc(form: any) {
     const direccion = this.url + 'autlan/nuevo/doc';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
+
   eliminarNoticia(id: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/eliminar/${id}`);
   }
+
   solicitudesgeneral(id: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/lista/general`);
   }
@@ -45,16 +49,19 @@ export class GeneralService {
   listaSolicitudes() {
     return this.http.get<RespuestaAPI>(API + `/autlan/lista/nuevos`);
   }
+
   listaSolicitudes2() {
     return this.http.get<RespuestaAPI>(
       API + `/autlan/lista/solicitudes/progreso`,
     );
   }
+
   listaSolicitudes3() {
     return this.http.get<RespuestaAPI>(
       API + `/autlan/lista/solicitudes/terminada`,
     );
   }
+
   estatusSolicitud(estatus: any, id: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/estado/${estatus}/${id}`);
   }
@@ -62,6 +69,7 @@ export class GeneralService {
   solicitudesID(id: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/solicitudes/${id}`);
   }
+
   registroPC(form: any) {
     const direccion = this.url + 'autlan/civil/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
@@ -85,19 +93,23 @@ export class GeneralService {
   verEnlaces() {
     return this.http.get<RespuestaAPI>(API + `/autlan/enlaces`);
   }
+
   verEnlacesPC() {
     return this.http.get<RespuestaAPI>(API + `/autlan/enlaces/pc`);
   }
+
   buscar(columna: string, valor: any) {
     return this.http.get<RespuestaAPI>(
       API + `/autlan/rc/buscar/${columna}/${valor}`,
     );
   }
+
   buscarConfe(columna: string, valor: any) {
     return this.http.get<RespuestaAPI>(
       API + `/autlan/consulta/confe/${columna}/${valor}`,
     );
   }
+
   buscarPC(columna: string, valor: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/pc/${columna}/${valor}`);
   }
@@ -110,6 +122,7 @@ export class GeneralService {
   obtener(id: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/docs/${id}`);
   }
+
   obtenerA8(id: any, inciso: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/docs/${id}/${inciso}`);
   }
@@ -163,19 +176,23 @@ export class GeneralService {
       API + `/autlan/docs/A8/2022/${id}/${inciso}`,
     );
   }
+
   obtenerSUBSIDIO(id: any, inciso: any) {
     return this.http.get<RespuestaAPI>(API + `/autlan/docs/A8/${id}/${inciso}`);
   }
+
   obtenerIdentificadorDocumentos(idEmpresa: any) {
     const direccion =
       API + `/preregistro/obtenerIdentificadorDocumentos/${idEmpresa}`;
     return this.http.get<RespuestaAPI>(direccion);
   }
+
   obtenerIdentificadorDocumentosAutlan(idEmpresa: any) {
     const direccion =
       API + `/preregistro/obtenerIdentificadorDocumentos/${idEmpresa}`;
     return this.http.get<RespuestaAPI>(direccion);
   }
+
   eliminarEnlace(form: any) {
     const direccion = API + '/autlan/actualizar';
     return this.http.put<RespuestaAPI>(direccion, form);
@@ -195,6 +212,7 @@ export class GeneralService {
     const direccion = API + '/autlan/actualizar/gobierno';
     return this.http.put<RespuestaAPI>(direccion, form);
   }
+
   verGobierno() {
     const direccion = API + '/autlan/gobierno';
     return this.http.get<RespuestaAPI>(direccion);
@@ -204,6 +222,7 @@ export class GeneralService {
     const direccion = this.url + 'autlan/noticia/nueva';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
+
   verNoticias() {
     const direccion = API + '/autlan/noticias';
     return this.http.get<RespuestaAPI>(direccion);
@@ -213,14 +232,17 @@ export class GeneralService {
     const direccion = API + '/autlan/lista/confe';
     return this.http.get<RespuestaAPI>(direccion);
   }
+
   verPersonal() {
     const direccion = API + '/autlan/personal';
     return this.http.get<RespuestaAPI>(direccion);
   }
+
   verBanner() {
     const direccion = API + '/autlan/banner';
     return this.http.get<RespuestaAPI>(direccion);
   }
+
   actualizarBanner(form: any) {
     const direccion = API + '/autlan/banner/actualizar';
     return this.http.put<RespuestaAPI>(direccion, form);
@@ -251,12 +273,20 @@ export class GeneralService {
     );
   }
 
-  newVehicle(form: VehicleForm) {
+  newVehicle(form: Vehicle) {
     const direccion = this.url + 'autlan/auto/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
 
   listaAutomoviles() {
     return this.http.get<RespuestaAPI>(API + `/autlan/lista/autos/completa`);
+  }
+
+  getVehicleById(id: number) {
+    return this.http.get<RespuestaAPI>(API + `/autlan/auto/${id}`);
+  }
+
+  updateVehicle(form: Vehicle): Observable<RespuestaAPI> {
+    return this.http.put<RespuestaAPI>(API + `/autlan/auto/actualizar`, form);
   }
 }

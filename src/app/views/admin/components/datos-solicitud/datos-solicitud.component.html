@@ -24,7 +24,7 @@
   </head>
 
   <body>
-    <section style="background-color: rgb(255, 255, 255); margin-top: 100px" id="services" class="services section-bg">
+    <section style="background-color: rgb(255, 255, 255); margin-top: 140px" id="services" class="services section-bg">
       <div class="container animate__animated animate__fadeInDown">
         <div class="row justify-content-center" style="border: solid; border-radius: 2vh; border-color: rgb(255, 255, 255); box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753)">
           <div class="col-12 col-md-8 col-lg-8 col-xl-6">
@@ -36,42 +36,47 @@
             </div>
 
             <!-- form -->
-            <form>
+            <form [formGroup]="vehicleForm">
               <div>
+                <div class="row mt-4">
+                  <img height="100" width="100" alt="" />
+                </div>
+                <div class="text-center mt-4">
+                  <button class="custom-button submit w-25" id="searchButton" type="button" (click)="navigateToEdit()">Editar</button>
+                </div>
                 <div class="row no-gutters form-floating">
                   <div class="col-12 form-floating mt-4 col-md mr-2">
-                    <input class="custom-input form-control" id="carPlatesInput" readonly placeholder="" />
+                    <input class="custom-input form-control" id="carPlatesInput" readonly placeholder="" formControlName="PLATES" />
                     <label for="carPlatesInput">Placas</label>
                   </div>
                   <div class="col-12 form-floating mt-4 col-md mr-2">
-                    <input class="custom-input form-control" id="carTypeInput" readonly placeholder="" />
+                    <input class="custom-input form-control" id="carTypeInput" readonly placeholder="" formControlName="TYPE" />
                     <label for="carTypeInput">Tipo de vehiculo</label>
                   </div>
                   <div class="col-12 form-floating mt-4 col-md">
-                    <input class="custom-input form-control" id="carBrandInput" readonly placeholder="" />
+                    <input class="custom-input form-control" id="carBrandInput" readonly placeholder="" formControlName="BRAND" />
                     <label for="carBrandInput">Marca vehiculo</label>
                   </div>
                 </div>
                 <div class="row no-gutters form-floating">
                   <div class="col-12 form-floating mt-4 col-md mr-2">
-                    <input class="custom-input form-control" id="carModelInput" readonly placeholder="" />
+                    <input class="custom-input form-control" id="carModelInput" readonly placeholder="" formControlName="SUB_BRAND" />
                     <label for="carModelInput">Sub-Marca vehiculo</label>
                   </div>
-                  <div class="col-12 form-floating mt-4 col-md mr-2">
-                    <input class="custom-input form-control" id="carSerialNumberInput" readonly placeholder="" />
-                    <label for="carSerialNumberInput">Numero de serie</label>
-                  </div>
                   <div class="col-12 form-floating mt-4 col-md">
-                    <input class="custom-input form-control" id="carColorInput" readonly placeholder="" />
+                    <input class="custom-input form-control" id="carColorInput" readonly placeholder="" formControlName="COLOR" />
                     <label for="carColorInput">Color</label>
                   </div>
                 </div>
                 <div class="row no-gutters form-floating">
                   <div class="col-12 form-floating mt-4 col-md mr-2">
-                    <input class="custom-input form-control" id="carDepartmentInput" readonly placeholder="" />
+                    <input class="custom-input form-control" id="carSerialNumberInput" readonly placeholder="" formControlName="SERIAL_NUMBER" />
+                    <label for="carSerialNumberInput">Numero de serie</label>
+                  </div>
+                  <div class="col-12 form-floating mt-4 col-md mr-2">
+                    <input class="custom-input form-control" id="carDepartmentInput" readonly placeholder="" formControlName="DEPARTMENT" />
                     <label for="carDepartmentInput">Departamento</label>
                   </div>
-                  <div class="col-12 form-floating mt-4 col-md-8"></div>
                 </div>
               </div>
             </form>
@@ -105,7 +110,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let service of services | paginate: { itemsPerPage: 3, currentPage: currentPage.services, id: 'servicesTable' }; let i = index">
-                        <td>{{ i + 1 }}</td>
+                        <td>{{ (currentPage.services - 1) * 3 + (i + 1) }}</td>
                         <td>{{ service.date }}</td>
                         <td>{{ service.description }}</td>
                         <td>{{ service.kilometers }}</td>
@@ -132,7 +137,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let insurance of insurances | paginate: { itemsPerPage: 3, currentPage: currentPage.insurances, id: 'insurancesTable' }; let i = index">
-                        <td>{{ i + 1 }}</td>
+                        <td>{{ (currentPage.insurances - 1) * 3 + (i + 1) }}</td>
                         <td>{{ insurance.date }}</td>
                         <td>{{ insurance.description }}</td>
                       </tr>
@@ -160,7 +165,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let fuel of fuels | paginate: { itemsPerPage: 3, currentPage: currentPage.fuels, id: 'fuelsTable' }; let i = index">
-                        <td>{{ i + 1 }}</td>
+                        <td>{{ (currentPage.fuels - 1) * 3 + (i + 1) }}</td>
                         <td>{{ fuel.date }}</td>
                         <td>{{ fuel.folio }}</td>
                         <td>{{ fuel.fuelType }}</td>

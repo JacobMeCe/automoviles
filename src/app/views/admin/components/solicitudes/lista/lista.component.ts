@@ -42,23 +42,13 @@ export class ListaComponent {
     });
   }
 
-  verDetalles() {
-    this.router.navigate(['admin/datos-solitud', 1]);
-  }
-
-  verVolver() {
-    this.router.navigate(['admin/solicitudes']);
-  }
-
   buscar(): void {
     const columName: string = this.cbCampo.nativeElement.value;
     const value: any = this.ctCadena.nativeElement.value;
 
     if (value.length) {
-      // console.log('entra buscar');
       this.api.buscar(columName, value).subscribe((res: any) => {
         this.data = res.body;
-        // console.log('entra buscar');
       });
     } else {
       this.reponsable = localStorage.getItem('tipo');
@@ -80,7 +70,11 @@ export class ListaComponent {
     this.pages = 1;
   }
 
-  agregarBtn() {
+  navigateToVehicleRegister() {
     this.router.navigate(['admin/solicitudes']);
+  }
+
+  navigateToVehicleDetails(vehicle: any) {
+    this.router.navigate(['admin/datos-solitud', vehicle.ID]);
   }
 }
