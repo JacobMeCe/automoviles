@@ -13,9 +13,9 @@ import { Vehicle } from '../../../../../interface/solicitudes/vehicle.interface'
   styleUrls: ['./solicitudes.component.scss'],
 })
 export class SolicitudesComponent {
-  departments = departments;
-  fileSelected: File;
-  newVehicleForm = VehicleForm;
+  private fileSelected: File;
+  protected newVehicleForm = VehicleForm;
+  protected departments = departments;
 
   constructor(
     private api: GeneralService,
@@ -62,14 +62,12 @@ export class SolicitudesComponent {
       .then(async (res: any) => {
         if (!res.isConfirmed) return;
 
+        /*
+
         form.IMAGE = await this.store.uploadImage(
           this.fileSelected,
           form.PLATES,
         );
-
-        console.log(form);
-
-        /*
 
         this.api.newVehicle(form).subscribe(() => {
           this.alerts

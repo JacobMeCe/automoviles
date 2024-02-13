@@ -41,7 +41,7 @@
                 <div class="text-center mt-4">
                   <img id="imagePreview" height="100" width="100" alt="" />
                 </div>
-                <div class="text-center mt-4" *ngIf="userType === 'Admin'">
+                <div class="text-center mt-4" *ngIf="getUserType() === 'Admin'">
                   <button class="custom-button inf w-25" id="searchButton" type="button" (click)="navigateToEdit()">Editar</button>
                 </div>
                 <div class="row no-gutters form-floating">
@@ -83,20 +83,20 @@
 
             <!-- buttons -->
             <div class="row no-gutters form-floating mt-4">
-              <div class="col-12 col-md mr-2 mt-2" *ngIf="userType === 'Admin'">
+              <div class="col-12 col-md mr-2 mt-2" *ngIf="getUserType() === 'Admin'">
                 <button class="custom-button submit" id="registerServiceButton" type="button" data-bs-toggle="modal" data-bs-target="#registerServiceModal">Registrar Servicio</button>
               </div>
-              <div class="col-12 col-md mr-2 mt-2" *ngIf="userType === 'Admin'">
+              <div class="col-12 col-md mr-2 mt-2" *ngIf="getUserType() === 'Admin'">
                 <button class="custom-button submit" id="registerInsuranceButton" type="button" data-bs-toggle="modal" data-bs-target="#registerInsuranceModal">Registrar Aseguranza</button>
               </div>
-              <div class="col-12 col-md mt-2" *ngIf="userType === 'Admin'">
+              <div class="col-12 col-md mt-2" *ngIf="getUserType() === 'Admin'">
                 <button class="custom-button submit" id="registerFuelButton" type="button" data-bs-toggle="modal" data-bs-target="#registerFuelModal">Registrar Combustible</button>
               </div>
             </div>
 
             <!-- table services -->
             <div class="mt-4">
-              <div class="row no-gutters form-floating" *ngIf="userType === 'Admin'">
+              <div class="row no-gutters form-floating" *ngIf="getUserType() === 'Admin'">
                 <div class="col mt-4">
                   <h3 class="text-center">Servicios</h3>
                   <table class="table table-striped table-hover text-center table-bordered">
@@ -109,7 +109,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let service of services | paginate: { itemsPerPage: 3, currentPage: currentPage.services, id: 'servicesTable' }; let i = index">
+                      <tr *ngFor="let service of getServices() | paginate: { itemsPerPage: 3, currentPage: currentPage.services, id: 'servicesTable' }; let i = index">
                         <td>{{ (currentPage.services - 1) * 3 + (i + 1) }}</td>
                         <td>{{ service.date }}</td>
                         <td>{{ service.description }}</td>
@@ -124,7 +124,7 @@
               </div>
 
               <!-- table insurances -->
-              <div class="row no-gutters form-floating" *ngIf="userType === 'Admin'">
+              <div class="row no-gutters form-floating" *ngIf="getUserType() === 'Admin'">
                 <div class="col mt-4">
                   <h3 class="text-center">Aseguranzas</h3>
                   <table class="table table-striped table-hover text-center table-bordered">
@@ -136,7 +136,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let insurance of insurances | paginate: { itemsPerPage: 3, currentPage: currentPage.insurances, id: 'insurancesTable' }; let i = index">
+                      <tr *ngFor="let insurance of getInsurances() | paginate: { itemsPerPage: 3, currentPage: currentPage.insurances, id: 'insurancesTable' }; let i = index">
                         <td>{{ (currentPage.insurances - 1) * 3 + (i + 1) }}</td>
                         <td>{{ insurance.date }}</td>
                         <td>{{ insurance.description }}</td>
@@ -150,7 +150,7 @@
               </div>
 
               <!-- table fuel -->
-              <div class="row no-gutters form-floating" *ngIf="userType === 'Admin'">
+              <div class="row no-gutters form-floating" *ngIf="getUserType() === 'Admin'">
                 <div class="col mt-4">
                   <h3 class="text-center">Combustible</h3>
                   <table class="table table-striped table-hover text-center table-bordered">
@@ -164,7 +164,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let fuel of fuels | paginate: { itemsPerPage: 3, currentPage: currentPage.fuels, id: 'fuelsTable' }; let i = index">
+                      <tr *ngFor="let fuel of getFuels() | paginate: { itemsPerPage: 3, currentPage: currentPage.fuels, id: 'fuelsTable' }; let i = index">
                         <td>{{ (currentPage.fuels - 1) * 3 + (i + 1) }}</td>
                         <td>{{ fuel.date }}</td>
                         <td>{{ fuel.folio }}</td>
@@ -189,9 +189,9 @@
       </div>
 
       <!-- modals -->
-      <app-service-modal *ngIf="userType === 'Admin'" />
-      <app-insurance-modal *ngIf="userType === 'Admin'" />
-      <app-fuel-modal *ngIf="userType === 'Admin'" />
+      <app-service-modal *ngIf="getUserType() === 'Admin'" />
+      <app-insurance-modal *ngIf="getUserType() === 'Admin'" />
+      <app-fuel-modal *ngIf="getUserType() === 'Admin'" />
     </section>
   </body>
 </html>

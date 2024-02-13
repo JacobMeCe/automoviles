@@ -14,25 +14,14 @@ import { VehicleForm } from '../../../../../forms/vehicleForm';
   styleUrls: ['./datos-solicitud.component.scss'],
 })
 export class DatosSolicitudComponent {
-  data: any;
-  id: any;
-  estatus: any;
-  userType: string = localStorage.getItem('tipo') || '';
-
-  vehicleForm = VehicleForm;
-
-  // start test
-  currentPage = {
+  protected readonly vehicleForm = VehicleForm;
+  protected currentPage = {
     services: 1,
     insurances: 1,
     fuels: 1,
   };
-
-  services: Service[] = [];
-  insurances: Insurance[] = [];
-  fuels: Fuel[] = [];
-
-  // end test
+  data: any;
+  estatus: any;
 
   constructor(
     private api: GeneralService,
@@ -42,33 +31,27 @@ export class DatosSolicitudComponent {
   ) {}
 
   actualizarEnCaptura() {
-    this.id = this.activo.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.api.datosPUT(1, this.id).subscribe((res: any) => {
+    this.api.datosPUT(1, this.getUserId()).subscribe((res: any) => {
       this.estatus = res.body;
-      this.alerta.realizado('Cambio', 'cambio realizado').then((res: any) => {
+      this.alerta.realizado('Cambio', 'cambio realizado').then(() => {
         location.reload();
       });
     });
   }
 
   actualizarCapturado() {
-    this.id = this.activo.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.api.datosPUT(2, this.id).subscribe((res: any) => {
+    this.api.datosPUT(2, this.getUserId()).subscribe((res: any) => {
       this.estatus = res.body;
-      this.alerta.realizado('Cambio', 'cambio realizado').then((res: any) => {
+      this.alerta.realizado('Cambio', 'cambio realizado').then(() => {
         location.reload();
       });
     });
   }
 
   actualizarNoEncontrado() {
-    this.id = this.activo.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.api.datosPUT(3, this.id).subscribe((res: any) => {
+    this.api.datosPUT(3, this.getUserId()).subscribe((res: any) => {
       this.estatus = res.body;
-      this.alerta.realizado('Cambio', 'cambio realizado').then((res: any) => {
+      this.alerta.realizado('Cambio', 'cambio realizado').then(() => {
         location.reload();
       });
     });
@@ -80,5 +63,32 @@ export class DatosSolicitudComponent {
 
   navigateToEdit() {
     this.router.navigate(['admin/solicitudes']);
+  }
+
+  fillVehicleForm() {
+    this.api.getVehicleById(Number(this.getUserId())).subscribe((res: any) => {
+      this.data = res.body;
+      this.vehicleForm.patchValue(this.data);
+    });
+  }
+
+  getServices(): Service[] {
+    return [];
+  }
+
+  getInsurances(): Insurance[] {
+    return [];
+  }
+
+  getFuels(): Fuel[] {
+    return [];
+  }
+
+  getUserId(): string | null {
+    return this.activo.snapshot.paramMap.get('id');
+  }
+
+  getUserType(): string | null {
+    return localStorage.getItem('tipo');
   }
 }
