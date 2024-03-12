@@ -8,17 +8,18 @@ import { MenuCompartidoComponent } from './components/menu-compartido/menu-compa
 import { IndexComponent } from './components/index/index.component';
 
 import { ActualizarComponent } from 'src/app/shared/components/footer-admin/actualizar/actualizar.component';
-import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
-import { ListaComponent } from './components/solicitudes/lista/lista.component';
-import { EstatusComponent } from './components/solicitudes/lista/estatus/estatus.component';
+import { EstatusComponent } from './components/automoviles/lista-automoviles/estatus/estatus.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogoComponent } from 'src/app/shared/components/sidenav-admin/logo/logo.component';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { DatosSolicitudComponent } from './components/datos-solicitud/datos-solicitud.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ServiceModalComponent } from './components/datos-solicitud/modals/service-modal/service-modal.component';
-import { InsuranceModalComponent } from './components/datos-solicitud/modals/insurance-modal/insurance-modal.component';
-import { FuelModalComponent } from './components/datos-solicitud/modals/fuel-modal/fuel-modal.component';
+import { ListaAutomovilesComponent } from './components/automoviles/lista-automoviles/lista-automoviles.component';
+import { NuevoAutomovilComponent } from './components/automoviles/nuevo-automovil/nuevo-automovil.component';
+import { DetallesAutomovilComponent } from './components/automoviles/detalles-automovil/detalles-automovil.component';
+import { ServicioComponent } from './components/automoviles/registros-automovil/servicio/servicio.component';
+import { AseguranzaComponent } from './components/automoviles/registros-automovil/aseguranza/aseguranza.component';
+import { CombustibleComponent } from './components/automoviles/registros-automovil/combustible/combustible.component';
+import { AutomovilRoutingModule } from './components/automoviles/automovil-routing.module';
 
 @NgModule({
   declarations: [
@@ -26,17 +27,18 @@ import { FuelModalComponent } from './components/datos-solicitud/modals/fuel-mod
     MenuCompartidoComponent,
     IndexComponent,
     ActualizarComponent,
-    SolicitudesComponent,
-    ListaComponent,
     EstatusComponent,
     LogoComponent,
-    DatosSolicitudComponent,
-    ServiceModalComponent,
-    InsuranceModalComponent,
-    FuelModalComponent,
+    ListaAutomovilesComponent,
+    NuevoAutomovilComponent,
+    DetallesAutomovilComponent,
+    ServicioComponent,
+    AseguranzaComponent,
+    CombustibleComponent,
   ],
 
   imports: [
+    AutomovilRoutingModule,
     AdminRoutingModule,
     SharedModule,
     ReactiveFormsModule,

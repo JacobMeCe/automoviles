@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/services/auth.service';
 import { Router } from '@angular/router';
-import { RespuestaAPI } from 'src/interface/api-responses.model';
-import { loginI } from 'src/interface/usuario.model';
+import { RespuestaAPI } from 'src/interface/general/api-responses.model';
+import { loginI } from 'src/interface/general/usuario.model';
 import { SweetAlertService } from 'src/services/sweet-alert.service';
 
 @Component({

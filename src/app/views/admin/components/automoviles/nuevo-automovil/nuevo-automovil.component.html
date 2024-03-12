@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>Nuevo Automovil</title>
+  <meta content="" name="description" />
+  <meta content="" name="keywords" />
+
+  <!-- Favicons -->
+  <link href="/src/assets/img/favicon.png" rel="icon" />
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet"
+  />
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link href="/src/assets/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+<section style="background-color: rgb(255, 255, 255); margin-top: 140px" id="services" class="services section-bg">
+  <div class="container animate__animated animate__fadeInDown">
+    <div class="row justify-content-center"
+         style="border: solid; border-radius: 2vh; border-color: rgb(255, 255, 255); box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753)">
+      <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+        <form [formGroup]="automovilForm" (ngSubmit)="postForm(this.automovilForm.value)" action="">
+          <div class="row">
+            <div class="col text-center">
+              <img src="https://i.imgur.com/WKrEdF2.png" height="100" width="100" alt="" style="margin-top: 1vh" />
+              <h1>Generar registro</h1>
+              <p style="margin-top: 1vh" class="text-h3">Rellene los datos del automóvil para completar el registro.</p>
+            </div>
+          </div>
+
+          <div class="mt-4 mb-5">
+            <div class="row form-floating mb-4">
+              <input id="placasInput" class="form-control" placeholder="" formControlName="PLACAS" />
+              <label for="placasInput">Placas</label>
+            </div>
+
+            <div class="row form-floating mb-4">
+              <select id="tipoInput" class="form-control" formControlName="TIPO_AUTOMOVIL">
+                <option *ngFor="let tipo of tiposAutomovil" [value]="tipo">
+                  {{ tipo }}
+              </select>
+              <label for="tipoInput">Tipo de Automóvil</label>
+            </div>
+
+            <div class="row form-floating mb-4">
+              <input id="marcaInput" class="form-control" placeholder="" formControlName="MARCA" />
+              <label for="marcaInput">Marca</label>
+            </div>
+
+            <div class="row form-floating mb-4">
+              <input id="modelInput" class="form-control" placeholder="" formControlName="MODELO" />
+              <label for="modelInput">Sub-Marca</label>
+            </div>
+
+            <div class="row form-floating mb-4">
+              <input id="numeroSerieInput" class="form-control" placeholder="" formControlName="NUMERO_SERIE" />
+              <label for="numeroSerieInput">Número de Serie</label>
+            </div>
+
+            <div class="row form-floating mb-4">
+              <input id="colorInput" class="form-control" placeholder="" formControlName="COLOR" />
+              <label for="colorInput">Color</label>
+            </div>
+
+            <div class="row form-floating mb-4">
+              <select id="departamentoInput" class="form-control" formControlName="DEPARTMENTO">
+                <option *ngFor="let departamento of departmentos" [value]="departamento">
+                  {{ departamento }}
+              </select>
+              <label for="departamentoInput">Departamento</label>
+            </div>
+
+            <!-- Upload image -->
+            <div class="row form-floating">
+              <div class="drop-area" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
+                   (drop)="onDrop($event)">
+                <p id="dropTitle" class="mb-3 absolute">Arrastre y suelte una imagen o haga clic para seleccionar un
+                  archivo</p>
+                <img id="imagePreview" class="absolute" />
+                <input
+                  id="inputFile"
+                  class="file"
+                  type="file"
+                  accept="image/*"
+                  name=""
+                  (change)="onFileSelected($event)"
+                  value="Arrastre y suelte una imagen o haga clic para seleccionar un archivo"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <button id="buttonSave" class="col custom-button submit" type="submit">Guardar</button>
+            <button id="buttonViewList" class="col custom-button return" (click)="viewRegistersList()">Ver lista
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Services Section -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/src/assets/vendor/aos/aos.js"></script>
+<script src="/src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/src/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/src/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/src/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/src/assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="/src/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/src/assets/js/main.js"></script>
+</body>
+</html>

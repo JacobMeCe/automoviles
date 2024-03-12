@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RespuestaAPI } from 'src/interface/api-responses.model';
+import { RespuestaAPI } from 'src/interface/general/api-responses.model';
 import { Observable, Subject } from 'rxjs';
-import { Vehicle } from '../interface/solicitudes/vehicle.interface';
+import { Automovil } from '../interface/automovil/automovil.interface';
 
 const API = 'https://api.guarderia.saion.mx';
 
@@ -229,7 +229,7 @@ export class GeneralService {
   }
 
   listadoConfe() {
-    const direccion = API + '/autlan/lista/confe';
+    const direccion = API + '/autlan/lista-automoviles/confe';
     return this.http.get<RespuestaAPI>(direccion);
   }
 
@@ -273,7 +273,7 @@ export class GeneralService {
     );
   }
 
-  newVehicle(form: Vehicle) {
+  newVehicle(form: Automovil) {
     const direccion = this.url + 'autlan/auto/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
@@ -286,7 +286,7 @@ export class GeneralService {
     return this.http.get<RespuestaAPI>(API + `/autlan/auto/${id}`);
   }
 
-  updateVehicle(form: Vehicle): Observable<RespuestaAPI> {
+  updateVehicle(form: Automovil): Observable<RespuestaAPI> {
     return this.http.put<RespuestaAPI>(API + `/autlan/auto/actualizar`, form);
   }
 }

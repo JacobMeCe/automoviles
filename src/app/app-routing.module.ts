@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
-import { IndexComponent } from './views/admin/components/index/index.component';
 import { LoginComponent } from './views/admin/components/LOGIN/login/login.component';
 
 const routes: Routes = [
@@ -12,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'admin/lista-solicitudes',
+        redirectTo: 'admin/automovil/lista',
         pathMatch: 'full',
       },
       {
