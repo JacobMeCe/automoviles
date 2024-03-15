@@ -92,6 +92,7 @@ export class NuevoAutomovilComponent {
 
          */
       });
+    this.automovilForm.reset();
   }
 
   /**
@@ -105,11 +106,23 @@ export class NuevoAutomovilComponent {
     this.previewImage(file, image);
   }
 
+  /**
+   * Functions to drag and drop image
+   * @description This functions are used to drag and drop an image
+   * to the input
+   * @param event
+   */
   onDragOver(event: any): void {
     event.preventDefault();
     this.changeDropTitle('Suelte la imagen');
   }
 
+  /**
+   * Functions to drag and drop image
+   * @description This functions are used to drag and drop an image
+   * to the input
+   * @param event
+   */
   onDragLeave(event: any): void {
     event.preventDefault();
     if (this.fileSelected) {
@@ -119,6 +132,12 @@ export class NuevoAutomovilComponent {
     this.changeDropTitle('Arrastre o suelte una imagen');
   }
 
+  /**
+   * Functions to drag and drop image
+   * @description This functions are used to drag and drop an image
+   * to the input
+   * @param event
+   */
   onDrop(event: any): void {
     event.preventDefault();
     const files: File[] = event.dataTransfer.files;
@@ -178,6 +197,8 @@ export class NuevoAutomovilComponent {
 
   /**
    * Function to remove image from preview
+   * @description This function remove the image from the preview
+   * and change the title to the default
    */
   clearImage(): void {
     const image = this.renderer.selectRootElement('#imagePreview');
@@ -200,7 +221,7 @@ export class NuevoAutomovilComponent {
    * Function to view details
    * @description This function redirect to the details page
    */
-  viewRegistersList(): void {
+  navigateToList(): void {
     this.router.navigate(['admin/automovil/lista']);
   }
 }

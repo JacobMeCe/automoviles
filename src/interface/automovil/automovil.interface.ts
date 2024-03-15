@@ -3,14 +3,13 @@ import { Departmento } from '../../utils/enum/departmento.enum';
 import { Status } from '../../utils/enum/status.enum';
 
 export interface Automovil {
-  ID?: number;
   PLACAS: string;
   TIPO_AUTOMOVIL: TipoAutomovil;
   MARCA: string;
   MODELO: string;
   NUMERO_SERIE: string;
   COLOR: string;
-  DEPARTMENTO: Departmento;
+  DEPARTAMENTO: Departmento;
   IMAGEN: string;
   STATUS?: Status;
 }

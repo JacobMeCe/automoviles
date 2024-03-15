@@ -8,7 +8,7 @@ export const AutomovilForm: FormGroup = new FormGroup({
   MODELO: new FormControl('', Validators.required),
   NUMERO_SERIE: new FormControl('', Validators.required),
   COLOR: new FormControl('', Validators.required),
-  DEPARTMENTO: new FormControl('', Validators.required),
+  DEPARTAMENTO: new FormControl('', Validators.required),
   IMAGEN: new FormControl('', Validators.required),
 } as {
   [K in keyof Automovil]: FormControl;

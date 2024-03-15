@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeneralService } from 'src/services/general.service';
+import { Automovil } from '../../../../../../interface/automovil/automovil.interface';
 
 @Component({
   selector: 'app-lista-automoviles',
@@ -9,7 +10,7 @@ import { GeneralService } from 'src/services/general.service';
 })
 export class ListaAutomovilesComponent {
   spinner = false;
-  data: any;
+  automoviles: any;
   conteo: any;
   reponsable: any;
   datos: any;
@@ -30,7 +31,7 @@ export class ListaAutomovilesComponent {
 
     this.spinner = true;
     this.api.listaAutomoviles().subscribe((res: any) => {
-      this.data = res.body;
+      this.automoviles = res.body;
 
       this.conteo = res.body.length;
       // console.log(this.conteo);
@@ -45,14 +46,14 @@ export class ListaAutomovilesComponent {
 
     if (value !== '') {
       this.api.buscar(columName, value).subscribe((res: any) => {
-        this.data = res.body;
+        this.automoviles = res.body;
       });
     } else {
       this.reponsable = localStorage.getItem('tipo');
 
       this.spinner = true;
       this.api.listaAutomoviles().subscribe((res: any) => {
-        this.data = res.body;
+        this.automoviles = res.body;
         // console.log(this.data);
 
         this.conteo = res.body.length;
@@ -63,11 +64,15 @@ export class ListaAutomovilesComponent {
     }
   }
 
+  getUserType(): string | null {
+    return localStorage.getItem('tipo');
+  }
+
   navigateToRegister() {
     this.router.navigate(['admin/automovil/nuevo']);
   }
 
-  navigateToVehicleDetails(vehicle: any) {
-    this.router.navigate([`admin/automovil/${vehicle.id}/detalles`]);
+  navigateToDetails(automovil: Automovil) {
+    this.router.navigate([`admin/automovil/${automovil.PLACAS}/detalles`]);
   }
 }

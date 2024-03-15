@@ -31,7 +31,7 @@
             <h1>Solicitudes</h1>
           </div>
           <div class="text-center mb-4" *ngIf="userType === 'Admin'">
-            <button type="button" class="custom-button submit w-auto" (click)="navigateToRegister()">Agregar vehiculo</button>
+            <button type="button" class="custom-button submit w-auto" (click)="navigateToRegister()" *ngIf="getUserType() === 'Admin'">Agregar vehiculo</button>
           </div>
 
           <div class="mb-4 d-flex flex-row align-items-center justify-content-around" style="max-width: 50%">
@@ -55,13 +55,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let datos of data | paginate: { itemsPerPage: 10, currentPage: pages, id: 'data' }" (dblclick)="navigateToVehicleDetails(datos)">
-                  <th scope="row">{{ datos.PLACAS }}</th>
-                  <td>{{ datos.MARCA }}</td>
-                  <td>{{ datos.COLOR }}</td>
-                  <td>{{ datos.DEPARTMENT }}</td>
+                <tr *ngFor="let automovil of automoviles | paginate: { itemsPerPage: 10, currentPage: pages, id: 'data' }" (dblclick)="navigateToDetails(automovil)">
+                  <th scope="row">{{ automovil.PLACAS }}</th>
+                  <td>{{ automovil.MARCA }}</td>
+                  <td>{{ automovil.COLOR }}</td>
+                  <td>{{ automovil.DEPARTMENTO }}</td>
                   <td>
-                    <button id="saveInput" class="custom-button inf" (click)="navigateToVehicleDetails(datos)">Examinar</button>
+                    <button id="saveInput" class="custom-button inf" (click)="navigateToDetails(automovil)">Examinar</button>
                   </td>
                 </tr>
               </tbody>

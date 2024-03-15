@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GeneralService } from 'src/services/general.service';
-import { SweetAlertService } from 'src/services/sweet-alert.service';
 
 import { Servicio } from '../../../../../../interface/automovil/registros-automovil/servicio.interface';
 import { Aseguranza } from '../../../../../../interface/automovil/registros-automovil/aseguranza.interface';
 import { Combustible } from '../../../../../../interface/automovil/registros-automovil/combustible.interface';
 import { AutomovilForm } from '../nuevo-automovil/form/automovil.form';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-detalles-automovil',
@@ -14,21 +14,21 @@ import { AutomovilForm } from '../nuevo-automovil/form/automovil.form';
   styleUrls: ['./detalles-automovil.component.scss'],
 })
 export class DetallesAutomovilComponent {
-  protected readonly vehicleForm = AutomovilForm;
-  protected currentPage = {
-    servicios: 1,
-    aseguranzas: 1,
-    combustible: 1,
-  };
-  data: any;
-  estatus: any;
+  protected readonly vehicleForm: FormGroup<any>;
+  protected currentPage: any;
 
   constructor(
     private api: GeneralService,
     private router: Router,
     private activo: ActivatedRoute,
-    private alerta: SweetAlertService,
-  ) {}
+  ) {
+    this.vehicleForm = AutomovilForm;
+    this.currentPage = {
+      servicios: 1,
+      aseguranzas: 1,
+      combustible: 1,
+    };
+  }
 
   getRegistrosServicios(): Servicio[] {
     return [];
@@ -46,7 +46,7 @@ export class DetallesAutomovilComponent {
     return localStorage.getItem('tipo');
   }
 
-  getAumovilId(): string | null {
+  getPlacas(): string | null {
     return this.activo.snapshot.paramMap.get('id');
   }
 

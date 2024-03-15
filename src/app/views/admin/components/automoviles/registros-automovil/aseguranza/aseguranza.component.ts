@@ -31,7 +31,7 @@ export class AseguranzaComponent {
   }
 
   getPlacas(): string | null {
-    return this.activo.snapshot.paramMap.get('id');
+    return this.activo.snapshot.paramMap.get('placas');
   }
 
   /**
@@ -41,7 +41,8 @@ export class AseguranzaComponent {
    * @param form
    */
   postForm(form: Aseguranza): void {
-    console.log(form);
+    form.PLACAS = <string>this.getPlacas();
+
     if (this.aseguranzaForm.invalid) {
       console.log('Error de solicitud');
       return;
