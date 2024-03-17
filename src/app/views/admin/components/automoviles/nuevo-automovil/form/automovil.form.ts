@@ -10,6 +10,7 @@ export const AutomovilForm: FormGroup = new FormGroup({
   COLOR: new FormControl('', Validators.required),
   DEPARTAMENTO: new FormControl('', Validators.required),
   IMAGEN: new FormControl('', Validators.required),
+  STATUS: new FormControl(),
 } as {
   [K in keyof Automovil]: FormControl;
 });

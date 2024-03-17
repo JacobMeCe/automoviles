@@ -52,7 +52,7 @@ export class NuevoAutomovilComponent {
    * and show a confirmation alert
    * @param form
    */
-  postForm(form: Automovil): void {
+  postForm(): void {
     if (this.automovilForm.invalid) {
       this.alerts.alertaError(
         'Error de solicitud',
@@ -91,8 +91,8 @@ export class NuevoAutomovilComponent {
         });
 
          */
+        this.automovilForm.reset();
       });
-    this.automovilForm.reset();
   }
 
   /**
@@ -222,6 +222,6 @@ export class NuevoAutomovilComponent {
    * @description This function redirect to the details page
    */
   navigateToList(): void {
-    this.router.navigate(['admin/automovil/lista']);
+    this.router.navigate(['admin/automoviles/lista']);
   }
 }

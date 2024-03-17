@@ -1,7 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeneralService } from 'src/services/general.service';
 import { Automovil } from '../../../../../../interface/automovil/automovil.interface';
+import { AutomovilGeneralService } from '../../../../../../services/test/automovil-general.service';
+import { RespuestaAPI } from '../../../../../../interface/general/api-responses.model';
 
 @Component({
   selector: 'app-lista-automoviles',
@@ -9,24 +11,20 @@ import { Automovil } from '../../../../../../interface/automovil/automovil.inter
   styleUrls: ['./lista-automoviles.component.scss'],
 })
 export class ListaAutomovilesComponent {
-  spinner = false;
-  automoviles: any;
-  conteo: any;
-  reponsable: any;
-  datos: any;
-  pages: number = 1;
-
-  userType: string = localStorage.getItem('tipo') || '';
-
-  @ViewChild('cbCampo') cbCampo: ElementRef;
-  @ViewChild('ctCadena') ctCadena: ElementRef;
+  protected automoviles: Automovil[];
+  protected currentPage: number;
 
   constructor(
     private api: GeneralService,
     private router: Router,
-  ) {}
+    private automovilService: AutomovilGeneralService,
+  ) {
+    this.currentPage = 1;
+  }
 
   ngOnInit() {
+    this.getListaAutomoviles();
+    /*
     this.reponsable = localStorage.getItem('tipo');
 
     this.spinner = true;
@@ -38,9 +36,11 @@ export class ListaAutomovilesComponent {
 
       this.spinner = false;
     });
+     */
   }
 
   buscar(): void {
+    /*
     const columName: string = this.cbCampo.nativeElement.value;
     const value: any = this.ctCadena.nativeElement.value;
 
@@ -54,14 +54,24 @@ export class ListaAutomovilesComponent {
       this.spinner = true;
       this.api.listaAutomoviles().subscribe((res: any) => {
         this.automoviles = res.body;
-        // console.log(this.data);
 
         this.conteo = res.body.length;
-        // console.log(this.conteo);
 
         this.spinner = false;
       });
     }
+
+     */
+  }
+
+  getListaAutomoviles(): void {
+    this.automovilService.getAutomoviles().subscribe((res: RespuestaAPI) => {
+      if (res.status === 200) {
+        this.automoviles = res.body;
+      } else {
+        this.automoviles = [];
+      }
+    });
   }
 
   getUserType(): string | null {
@@ -69,10 +79,10 @@ export class ListaAutomovilesComponent {
   }
 
   navigateToRegister() {
-    this.router.navigate(['admin/automovil/nuevo']);
+    this.router.navigate(['admin/automoviles/nuevo']);
   }
 
   navigateToDetails(automovil: Automovil) {
-    this.router.navigate([`admin/automovil/${automovil.PLACAS}/detalles`]);
+    this.router.navigate([`admin/automoviles/${automovil.PLACAS}/detalles`]);
   }
 }

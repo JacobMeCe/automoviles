@@ -2,7 +2,7 @@
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form [formGroup]="servicioForm" (ngSubmit)="postForm(this.servicioForm.value)">
+      <form [formGroup]="this.servicioForm" (ngSubmit)="this.postForm()">
         <div class="modal-header">
           <h5 class="modal-title">Registrar Servicio</h5>
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
@@ -11,25 +11,21 @@
         </div>
         <div class="modal-body ml-3 mr-3">
           <div class="row form-floating align-items-center mt-4 form-floating mb-3">
-            <input id="dateServiceInput" class="form-control" type="date" required placeholder="" />
+            <input id="dateServiceInput" class="form-control" type="date" required placeholder="" formControlName="FECHA" />
             <label for="dateServiceInput">Fecha</label>
           </div>
           <div class="row form-floating align-items-center mt-3 form-floating mb-3">
-            <textarea class="form-control h-200" id="descriptionServiceInput" required placeholder=""></textarea>
+            <textarea class="form-control h-200" id="descriptionServiceInput" required placeholder="" formControlName="DESCRIPCION"></textarea>
             <label for="descriptionServiceInput">Descripción</label>
           </div>
           <div class="row form-floating align-items-center mt-4 form-floating mb-3">
-            <input class="form-control" id="costServiceInput" type="number" required placeholder="" />
-            <label for="costServiceInput">Costo</label>
-          </div>
-          <div class="row form-floating align-items-center mt-4 form-floating mb-3">
-            <input class="form-control" id="kilometerServiceInput" type="number" placeholder="" />
+            <input class="form-control" id="kilometerServiceInput" type="number" required placeholder="" formControlName="KILOMETRAJE" />
             <label for="kilometerServiceInput">Kilometraje</label>
           </div>
         </div>
         <div class="modal-footer no-gutters">
           <div class="col">
-            <button class="custom-button return w-100" type="button" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" #closeButton class="custom-button return w-100" data-bs-dismiss="modal">Cerrar</button>
           </div>
           <div class="col">
             <button class="custom-button submit w-100" id="saveServiceButton" type="submit">Guardar</button>

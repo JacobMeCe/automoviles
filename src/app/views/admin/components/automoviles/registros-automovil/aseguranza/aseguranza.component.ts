@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AseguranzaForm } from './form/aseguranza.form';
-import { Aseguranza } from '../../../../../../../interface/automovil/registros-automovil/aseguranza.interface';
 import { ActivatedRoute } from '@angular/router';
+import { SweetAlertService } from '../../../../../../../services/sweet-alert.service';
+import { DetallesAutomovilComponent } from '../../detalles-automovil/detalles-automovil.component';
+import { RecordsGeneralService } from '../../../../../../../services/test/records-general.service';
+import { RespuestaAPI } from '../../../../../../../interface/general/api-responses.model';
 
 @Component({
   selector: 'app-aseguranza',
@@ -10,9 +13,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./aseguranza.component.scss'],
 })
 export class AseguranzaComponent {
-  protected aseguranzaForm: FormGroup<any>;
+  protected readonly aseguranzaForm: FormGroup<any>;
+  @ViewChild('closeButton') closeButton: ElementRef;
 
-  constructor(private activo: ActivatedRoute) {
+  constructor(
+    private readonly activo: ActivatedRoute,
+    private readonly alerts: SweetAlertService,
+    private readonly recordsService: RecordsGeneralService,
+    private readonly detallesAutomovil: DetallesAutomovilComponent,
+  ) {
     this.aseguranzaForm = AseguranzaForm;
   }
 
@@ -38,15 +47,40 @@ export class AseguranzaComponent {
    * Function to post form
    * @description This function send the form to the API
    * and show a confirmation alert
-   * @param form
    */
-  postForm(form: Aseguranza): void {
-    form.PLACAS = <string>this.getPlacas();
+  postForm(): void {
+    this.aseguranzaForm.patchValue({ PLACAS: this.getPlacas() });
 
     if (this.aseguranzaForm.invalid) {
-      console.log('Error de solicitud');
+      this.alerts.alertaError(
+        'Error de solicitud',
+        'Todos los campos son obligatorios',
+      );
       return;
     }
-    console.log('Formulario enviado');
+
+    this.alerts
+      .realizado('Registro exitoso', 'El registro se ha guardado correctamente')
+      .then(() => {
+        this.recordsService
+          .newAseguranza(this.aseguranzaForm.value)
+          .subscribe((response: RespuestaAPI) => {
+            if (response.status === 201) {
+              this.updateRegistrosAseguranzas();
+              this.aseguranzaForm.reset();
+              this.dismissModal();
+            } else {
+              this.alerts.alertaError('Error', response.json);
+            }
+          });
+      });
+  }
+
+  updateRegistrosAseguranzas(): void {
+    this.detallesAutomovil.getRegistrosAseguranzas();
+  }
+
+  dismissModal(): void {
+    this.closeButton.nativeElement.click();
   }
 }

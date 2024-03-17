@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
-    path: 'automovil',
+    path: 'automoviles',
     children: [
       {
         path: 'lista',
@@ -21,7 +21,7 @@ const routes: Routes = [
         canActivate: [AuthEGuard],
       },
       {
-        path: ':id/detalles',
+        path: ':placas/detalles',
         component: DetallesAutomovilComponent,
         canActivate: [AuthEGuard],
       },

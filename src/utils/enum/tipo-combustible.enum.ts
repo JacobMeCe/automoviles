@@ -1,4 +1,4 @@
 export enum TipoCombustible {
-  GASOLINA = 'GASOLINE',
+  GASOLINA = 'GASOLINA',
   DIESEL = 'DIESEL',
 }

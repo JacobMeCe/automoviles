@@ -2,7 +2,7 @@
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form [formGroup]="combustibleForm" (ngSubmit)="postForm(this.combustibleForm.value)">
+      <form [formGroup]="this.combustibleForm" (ngSubmit)="this.postForm()">
         <div class="modal-header">
           <h5 class="modal-title">Registrar Combustible</h5>
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
@@ -20,8 +20,8 @@
           </div>
           <div class="row form-floating align-items-center mt-4 form-floating mb-3" >
             <select class="form-select" id="typeFuelInput" required formControlName="TIPO_COMBUSTIBLE" >
-              <option value="gasoline">Gasolina</option>
-              <option value="diesel">Diesel</option>
+              <option value="GASOLINA">GASOLINA</option>
+              <option value="DIESEL">DIESEL</option>
             </select>
             <label for="typeFuelInput">Tipo de Combustible</label>
           </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="modal-footer no-gutters">
           <div class="col">
-            <button type="button" class="custom-button return w-100" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" #closeButton class="custom-button return w-100" data-bs-dismiss="modal">Cerrar</button>
           </div>
           <div class="col">
             <button class="custom-button submit" id="saveFuelButton" type="submit">Guardar</button>

@@ -29,7 +29,7 @@
     <div class="row justify-content-center"
          style="border: solid; border-radius: 2vh; border-color: rgb(255, 255, 255); box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753)">
       <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-        <form [formGroup]="automovilForm" (ngSubmit)="postForm(this.automovilForm.value)" action="">
+        <form [formGroup]="automovilForm" (ngSubmit)="postForm()" action="">
           <div class="row">
             <div class="col text-center">
               <img src="https://i.imgur.com/WKrEdF2.png" height="100" width="100" alt="" style="margin-top: 1vh" />
@@ -73,7 +73,7 @@
             </div>
 
             <div class="row form-floating mb-4">
-              <select id="departamentoInput" class="form-control" formControlName="DEPARTMENTO">
+              <select id="departamentoInput" class="form-control" formControlName="DEPARTAMENTO">
                 <option *ngFor="let departamento of departmentos" [value]="departamento">
                   {{ departamento }}
               </select>

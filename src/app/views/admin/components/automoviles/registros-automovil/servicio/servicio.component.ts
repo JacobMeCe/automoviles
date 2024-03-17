@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ServicioForm } from './form/servicio.form';
 import { ActivatedRoute } from '@angular/router';
+import { SweetAlertService } from '../../../../../../../services/sweet-alert.service';
+import { RecordsGeneralService } from '../../../../../../../services/test/records-general.service';
+import { DetallesAutomovilComponent } from '../../detalles-automovil/detalles-automovil.component';
+import { RespuestaAPI } from '../../../../../../../interface/general/api-responses.model';
 
 @Component({
   selector: 'app-servicio',
@@ -9,9 +13,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./servicio.component.scss'],
 })
 export class ServicioComponent {
-  protected servicioForm: FormGroup<any>;
+  protected readonly servicioForm: FormGroup<any>;
+  @ViewChild('closeButton') closeButton: ElementRef;
 
-  constructor(private activo: ActivatedRoute) {
+  constructor(
+    private readonly activo: ActivatedRoute,
+    private readonly alerts: SweetAlertService,
+    private readonly recordsService: RecordsGeneralService,
+    private readonly detallesAutomovil: DetallesAutomovilComponent,
+  ) {
     this.servicioForm = ServicioForm;
   }
 
@@ -25,13 +35,39 @@ export class ServicioComponent {
    * and show a confirmation alert
    * @param form
    */
-  postForm(form: any): void {
-    form.PLACAS = <string>this.getPlacas();
+  postForm(): void {
+    this.servicioForm.patchValue({ PLACAS: this.getPlacas() });
 
     if (this.servicioForm.invalid) {
-      console.log('Error de solicitud');
+      this.alerts.alertaError(
+        'Error de solicitud',
+        'Todos los campos son obligatorios',
+      );
       return;
     }
-    console.log('Formulario enviado');
+
+    this.alerts
+      .realizado('Registro exitoso', 'El registro se ha guardado correctamente')
+      .then(() => {
+        this.recordsService
+          .newServicio(this.servicioForm.value)
+          .subscribe((response: RespuestaAPI) => {
+            if (response.status === 201) {
+              this.updateRegistrosServicios();
+              this.servicioForm.reset();
+              this.dismissModal();
+            } else {
+              this.alerts.alertaError('Error al guardar', response.json);
+            }
+          });
+      });
+  }
+
+  updateRegistrosServicios(): void {
+    this.detallesAutomovil.getRegistrosServicios();
+  }
+
+  dismissModal(): void {
+    this.closeButton.nativeElement.click();
   }
 }

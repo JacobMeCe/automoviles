@@ -1,8 +1,8 @@
-<div class="modal fade" id="registerInsuranceModal" tabindex="-1" aria-labelledby="registerInsuranceModalLabel"
-     aria-hidden="true">
+<div class="modal fade" #registerInsuranceModal id="registerInsuranceModal" tabindex="-1" aria-labelledby="registerInsuranceModalLabel" aria-hidden="true">
+aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form [formGroup]="aseguranzaForm" (ngSubmit)="postForm(this.aseguranzaForm.value)">
+      <form [formGroup]="this.aseguranzaForm" (ngSubmit)="this.postForm()">
         <div class="modal-header">
           <h5 class="modal-title">Registrar Aseguranza</h5>
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
@@ -21,7 +21,7 @@
         </div>
         <div class="modal-footer no-gutters">
           <div class="col">
-            <button type="button" class="custom-button return w-100" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" #closeButton class="custom-button return w-100" data-bs-dismiss="modal">Cerrar</button>
           </div>
           <div class="col">
             <button class="custom-button submit w-100" id="saveInsuranceButton" type="submit">Guardar</button>

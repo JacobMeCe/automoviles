@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CombustibleForm } from './form/combustible.form';
 import { ActivatedRoute } from '@angular/router';
-import { Combustible } from '../../../../../../../interface/automovil/registros-automovil/combustible.interface';
+import { SweetAlertService } from '../../../../../../../services/sweet-alert.service';
+import { RecordsGeneralService } from '../../../../../../../services/test/records-general.service';
+import { DetallesAutomovilComponent } from '../../detalles-automovil/detalles-automovil.component';
 
 @Component({
   selector: 'app-combustible',
@@ -10,9 +12,15 @@ import { Combustible } from '../../../../../../../interface/automovil/registros-
   styleUrls: ['./combustible.component.scss'],
 })
 export class CombustibleComponent {
-  protected combustibleForm: FormGroup<any>;
+  protected readonly combustibleForm: FormGroup<any>;
+  @ViewChild('closeButton') closeButton: ElementRef;
 
-  constructor(private activo: ActivatedRoute) {
+  constructor(
+    private readonly activo: ActivatedRoute,
+    private readonly alerts: SweetAlertService,
+    private readonly recordsService: RecordsGeneralService,
+    private readonly detallesAutomovil: DetallesAutomovilComponent,
+  ) {
     this.combustibleForm = CombustibleForm;
   }
 
@@ -20,7 +28,7 @@ export class CombustibleComponent {
     // Change all inputs to uppercase
     this.combustibleForm.valueChanges.subscribe((value) => {
       for (const field in value) {
-        if (typeof value[field] === 'string') {
+        if (typeof value[field] === 'string' && field !== 'TIPO_COMBUSTIBLE') {
           const control = this.combustibleForm.get(field);
           if (control) {
             control.setValue(value[field].toUpperCase(), { emitEvent: false });
@@ -40,13 +48,41 @@ export class CombustibleComponent {
    * and show a confirmation alert
    * @param form
    */
-  postForm(form: Combustible): void {
-    form.PLACAS = <string>this.getPlacas();
+  postForm(): void {
+    this.combustibleForm.patchValue({ PLACAS: this.getPlacas() });
 
     if (this.combustibleForm.invalid) {
-      console.log('Error de solicitud');
+      this.alerts.alertaError(
+        'Error de solicitud',
+        'Todos los campos son obligatorios',
+      );
       return;
     }
-    console.log('Formulario enviado');
+
+    this.alerts
+      .realizado('Registro exitoso', 'El registro se ha guardado correctamente')
+      .then(() => {
+        this.recordsService
+          .newCombustible(this.combustibleForm.value)
+          .subscribe((response: any) => {
+            console.log(this.combustibleForm.value);
+            console.log(response);
+            if (response.status === 201) {
+              this.updateRegistrosCombustibles();
+              this.combustibleForm.reset();
+              this.dismissModal();
+            } else {
+              this.alerts.alertaError('Error', response.json);
+            }
+          });
+      });
+  }
+
+  updateRegistrosCombustibles(): void {
+    this.detallesAutomovil.getRegistrosCombustibles();
+  }
+
+  dismissModal(): void {
+    this.closeButton.nativeElement.click();
   }
 }
