@@ -13,6 +13,8 @@ import { RespuestaAPI } from '../../../../../../interface/general/api-responses.
 export class ListaAutomovilesComponent {
   protected automoviles: Automovil[];
   protected currentPage: number;
+  protected searchTerm: string = '';
+  protected selectedFilter: string = 'PLACAS';
 
   constructor(
     private api: GeneralService,
@@ -24,51 +26,26 @@ export class ListaAutomovilesComponent {
 
   ngOnInit() {
     this.getListaAutomoviles();
-    /*
-    this.reponsable = localStorage.getItem('tipo');
-
-    this.spinner = true;
-    this.api.listaAutomoviles().subscribe((res: any) => {
-      this.automoviles = res.body;
-
-      this.conteo = res.body.length;
-      // console.log(this.conteo);
-
-      this.spinner = false;
-    });
-     */
   }
 
   buscar(): void {
-    /*
-    const columName: string = this.cbCampo.nativeElement.value;
-    const value: any = this.ctCadena.nativeElement.value;
+    const searchTerm = this.searchTerm.trim().toUpperCase();
 
-    if (value !== '') {
-      this.api.buscar(columName, value).subscribe((res: any) => {
-        this.automoviles = res.body;
+    if (searchTerm !== '') {
+      this.automoviles = this.automoviles.filter((automovil: Automovil) => {
+        const value = automovil[this.selectedFilter as keyof Automovil];
+        return value ? value.includes(searchTerm) : false;
       });
-    } else {
-      this.reponsable = localStorage.getItem('tipo');
-
-      this.spinner = true;
-      this.api.listaAutomoviles().subscribe((res: any) => {
-        this.automoviles = res.body;
-
-        this.conteo = res.body.length;
-
-        this.spinner = false;
-      });
+      return;
     }
 
-     */
+    this.getListaAutomoviles();
   }
 
   getListaAutomoviles(): void {
     this.api.listaAutomoviles().subscribe((res: RespuestaAPI) => {
       if (res.status === 200) {
         this.automoviles = res.body;
-        console.log(this.automoviles);
       } else {
         this.automoviles = [];
       }

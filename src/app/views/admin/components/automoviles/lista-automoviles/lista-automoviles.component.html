@@ -28,19 +28,19 @@
       <div class="animate__animated animate__fadeInDown">
         <div class="row justify-content-center">
           <div class="text-center mb-4">
-            <h1>Solicitudes</h1>
+            <h1>Automóviles</h1>
           </div>
           <div class="text-center mb-4" *ngIf="getUserType() === 'Admin'">
-            <button type="button" class="custom-button submit w-auto" (click)="navigateToRegister()" *ngIf="getUserType() === 'Admin'">Agregar vehiculo</button>
+            <button type="button" class="custom-button submit w-auto" (click)="navigateToRegister()" *ngIf="getUserType() === 'Admin'">Agregar Automóvil</button>
           </div>
 
           <div class="mb-4 d-flex flex-row align-items-center justify-content-around" style="max-width: 50%">
-            <select class="form-select w-auto mr-2" name="filtro" id="filtro" #cbCampo>
-              <option selected value="FOLIO">Placas</option>
-              <option selected value="NOMBRE">Departamento</option>
+            <select class="form-select w-auto mr-2" name="filtro" id="filtro" [(ngModel)]="selectedFilter">
+              <option selected value="PLACAS">Placas</option>
+              <option selected value="DEPARTAMENTO">Departamento</option>
             </select>
-            <input class="form-control mr-2" placeholder="Nombre del documento" (keyup)="buscar()" #ctCadena />
-            <button type="button" class="custom-button inf w-auto"><i class="bi bi-search"></i></button>
+            <input class="form-control mr-2" placeholder="Nombre del documento" [(ngModel)]="searchTerm" (keyup)="buscar()" />
+            <button type="button" class="custom-button inf w-auto"><i class="bi bi-search" (click)="buscar()"></i></button>
           </div>
 
           <div class="pl-5 pr-5">

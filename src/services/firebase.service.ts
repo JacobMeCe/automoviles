@@ -20,11 +20,11 @@ export class FirebaseService {
    * @param name
    */
   async uploadImage(file: File, name: string): Promise<string> {
-    //const imageRef = ref(this.storage, `vehicles/images/${name}`);
+    const imageRef = ref(this.storage, `vehicles/images/${name}`);
     try {
-      //const snapshot = await uploadBytes(imageRef, file);
-      //return await getDownloadURL(snapshot.ref);
-      return 'das';
+      const snapshot = await uploadBytes(imageRef, file);
+      console.log('Uploaded a blob or file!', getDownloadURL(snapshot.ref));
+      return await getDownloadURL(snapshot.ref);
     } catch (error) {
       console.error(error);
       throw error;

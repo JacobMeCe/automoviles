@@ -273,6 +273,8 @@ export class GeneralService {
     );
   }
 
+  // --- Peticiones para Automóviles ---
+
   nuevoAutomovil(form: Automovil) {
     const direccion = this.url + 'autlan/auto/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
@@ -282,11 +284,33 @@ export class GeneralService {
     return this.http.get<RespuestaAPI>(API + `/autlan/lista/autos/completa`);
   }
 
-  getAutomovil(id: number) {
-    return this.http.get<RespuestaAPI>(API + `/autlan/auto/${id}`);
+  detallesAutomovil(placas: string) {
+    return this.http.get<RespuestaAPI>(API + `/autlan/auto/detalles/${placas}`);
   }
 
-  actualizarAutomovil(form: Automovil): Observable<RespuestaAPI> {
-    return this.http.put<RespuestaAPI>(API + `/autlan/auto/actualizar`, form);
+  actualizarAutomovil(
+    placas: string,
+    form: Automovil,
+  ): Observable<RespuestaAPI> {
+    return this.http.put<RespuestaAPI>(
+      API + `/autlan/auto/actualizar/${placas}`,
+      form,
+    );
+  }
+
+  // --- Peticiones para Registros de Automóviles ---
+
+  listaServicios() {
+    return this.http.get<RespuestaAPI>(API + `/autlan/lista/servicios/auto`);
+  }
+
+  listaCombustibles() {
+    return this.http.get<RespuestaAPI>(API + `/autlan/lista/gasolina`);
+  }
+
+  listaAseguranzas() {
+    return this.http.get<RespuestaAPI>(
+      API + `/autlan/lista/aseguranza/detalles`,
+    );
   }
 }

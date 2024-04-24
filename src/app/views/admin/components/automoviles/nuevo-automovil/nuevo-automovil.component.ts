@@ -35,7 +35,7 @@ export class NuevoAutomovilComponent {
     // Change all inputs to uppercase
     this.automovilForm.valueChanges.subscribe((value) => {
       for (const field in value) {
-        if (typeof value[field] === 'string' && field !== 'DEPARTMENT') {
+        if (typeof value[field] === 'string' && field !== 'IMAGEN') {
           const control = this.automovilForm.get(field);
           if (control) {
             control.setValue(value[field].toUpperCase(), { emitEvent: false });
@@ -51,6 +51,8 @@ export class NuevoAutomovilComponent {
    * and show a confirmation alert
    */
   postForm(): void {
+    console.log(this.automovilForm.value);
+
     if (this.automovilForm.invalid) {
       this.alerts.alertaError(
         'Error de solicitud',
@@ -68,8 +70,13 @@ export class NuevoAutomovilComponent {
         if (!res.isConfirmed) return;
 
         this.automovilForm.patchValue({
-          IMAGE: this.fileSelected,
+          IMAGEN: await this.store.uploadImage(
+            this.fileSelected,
+            this.automovilForm.value.PLACAS,
+          ),
         });
+
+        console.log(this.automovilForm.value);
 
         this.api.nuevoAutomovil(this.automovilForm.value).subscribe(() => {
           this.alerts

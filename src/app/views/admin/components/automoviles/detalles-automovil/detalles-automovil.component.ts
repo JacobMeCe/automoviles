@@ -56,52 +56,44 @@ export class DetallesAutomovilComponent {
   getRegistrosServicios(): void {
     const placas = this.getPlacas();
     if (placas) {
-      this.recordsService
-        .getRecordsByAutomovil('servicios', placas)
-        .subscribe((res: RespuestaAPI) => {
-          if (res.status === 200) {
-            this.servicios = res.body;
-          }
-        });
+      this.api.listaServicios().subscribe((res: RespuestaAPI) => {
+        if (res.status === 200) {
+          this.servicios = res.body;
+        }
+      });
     }
   }
 
   getRegistrosAseguranzas(): void {
     const placas = this.getPlacas();
     if (placas) {
-      this.recordsService
-        .getRecordsByAutomovil('aseguranzas', placas)
-        .subscribe((res: RespuestaAPI) => {
-          if (res.status === 200) {
-            this.aseguranzas = res.body;
-          }
-        });
+      this.api.listaAseguranzas().subscribe((res: RespuestaAPI) => {
+        if (res.status === 200) {
+          this.aseguranzas = res.body;
+        }
+      });
     }
   }
 
   getRegistrosCombustibles(): void {
     const placas = this.getPlacas();
     if (placas) {
-      this.recordsService
-        .getRecordsByAutomovil('combustibles', placas)
-        .subscribe((res: RespuestaAPI) => {
-          if (res.status === 200) {
-            this.combustibles = res.body;
-          }
-        });
+      this.api.listaCombustibles().subscribe((res: RespuestaAPI) => {
+        if (res.status === 200) {
+          this.combustibles = res.body;
+        }
+      });
     }
   }
 
   getAutomovilDetails(): void {
     const placas = this.getPlacas();
     if (placas) {
-      this.automovilService
-        .getAutomovil(placas)
-        .subscribe((res: RespuestaAPI) => {
-          if (res.status === 200) {
-            this.automovilForm.setValue(res.body);
-          }
-        });
+      this.api.detallesAutomovil(placas).subscribe((res: RespuestaAPI) => {
+        if (res.status === 200) {
+          this.automovilForm.setValue(res.body);
+        }
+      });
     }
   }
 

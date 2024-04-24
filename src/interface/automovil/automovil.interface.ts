@@ -3,6 +3,8 @@ import { Departmento } from '../../utils/enum/departmento.enum';
 import { Status } from '../../utils/enum/status.enum';
 
 export interface Automovil {
+  [key: string]: any;
+
   PLACAS: string;
   TIPO_AUTOMOVIL: TipoAutomovil;
   MARCA: string;
