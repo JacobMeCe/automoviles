@@ -132,7 +132,9 @@ export class NuevoAutomovilComponent {
       this.changeDropTitle(this.fileSelected.name);
       return;
     }
-    this.changeDropTitle('Arrastre o suelte una imagen');
+    this.changeDropTitle(
+      'Arrastre y suelte una imagen o haga clic para seleccionar un archivo',
+    );
   }
 
   /**
