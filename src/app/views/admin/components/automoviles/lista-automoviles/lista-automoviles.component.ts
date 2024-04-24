@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeneralService } from 'src/services/general.service';
 import { Automovil } from '../../../../../../interface/automovil/automovil.interface';
-import { AutomovilGeneralService } from '../../../../../../services/test/automovil-general.service';
 import { RespuestaAPI } from '../../../../../../interface/general/api-responses.model';
 
 @Component({
@@ -19,15 +18,17 @@ export class ListaAutomovilesComponent {
   constructor(
     private api: GeneralService,
     private router: Router,
-    private automovilService: AutomovilGeneralService,
   ) {
     this.currentPage = 1;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getListaAutomoviles();
   }
 
+  /**
+   * Realiza una búsqueda en la lista de automóviles
+   */
   buscar(): void {
     const searchTerm = this.searchTerm.trim().toUpperCase();
 
@@ -42,6 +43,9 @@ export class ListaAutomovilesComponent {
     this.getListaAutomoviles();
   }
 
+  /**
+   * Obtiene la lista de automóviles desde la API
+   */
   getListaAutomoviles(): void {
     this.api.listaAutomoviles().subscribe((res: RespuestaAPI) => {
       if (res.status === 200) {
@@ -52,15 +56,26 @@ export class ListaAutomovilesComponent {
     });
   }
 
+  /**
+   * Obtiene el tipo de usuario actual desde el localStorage
+   * @returns string | null
+   */
   getUserType(): string | null {
     return localStorage.getItem('tipo');
   }
 
-  navigateToRegister() {
+  /**
+   * Navega a la vista de registro de un nuevo automóvil
+   */
+  navigateToRegister(): void {
     this.router.navigate(['admin/automoviles/nuevo']);
   }
 
-  navigateToDetails(automovil: Automovil) {
+  /**
+   * Navega a la vista de detalles de un automóvil
+   * @param automovil
+   */
+  navigateToDetails(automovil: Automovil): void {
     this.router.navigate([`admin/automoviles/${automovil.PLACAS}/detalles`]);
   }
 }

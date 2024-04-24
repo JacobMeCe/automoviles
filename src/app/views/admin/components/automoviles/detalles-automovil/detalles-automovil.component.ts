@@ -7,9 +7,7 @@ import { Aseguranza } from '../../../../../../interface/automovil/registros-auto
 import { Combustible } from '../../../../../../interface/automovil/registros-automovil/combustible.interface';
 import { AutomovilForm } from '../nuevo-automovil/form/automovil.form';
 import { FormGroup } from '@angular/forms';
-import { AutomovilGeneralService } from '../../../../../../services/test/automovil-general.service';
 import { RespuestaAPI } from '../../../../../../interface/general/api-responses.model';
-import { RecordsGeneralService } from '../../../../../../services/test/records-general.service';
 
 @Component({
   selector: 'app-detalles-automovil',
@@ -27,8 +25,6 @@ export class DetallesAutomovilComponent {
     private api: GeneralService,
     private router: Router,
     private activo: ActivatedRoute,
-    private readonly automovilService: AutomovilGeneralService,
-    private readonly recordsService: RecordsGeneralService,
   ) {
     this.automovilForm = AutomovilForm;
     this.currentPage = {
@@ -45,14 +41,25 @@ export class DetallesAutomovilComponent {
     this.getRegistrosCombustibles();
   }
 
+  /**
+   * Obtiene el tipo de usuario del local storage
+   * @returns tipo
+   */
   getUserType(): string | null {
     return localStorage.getItem('tipo');
   }
 
+  /**
+   * Obtiene las placas del automovil desde la URL
+   * @returns placas
+   */
   getPlacas(): string | null {
     return this.activo.snapshot.paramMap.get('placas');
   }
 
+  /**
+   * Obtiene los registros de servicios del automovil desde la API
+   */
   getRegistrosServicios(): void {
     const placas = this.getPlacas();
     if (placas) {
@@ -64,6 +71,9 @@ export class DetallesAutomovilComponent {
     }
   }
 
+  /**
+   * Obtiene los registros de aseguranzas del automovil desde la API
+   */
   getRegistrosAseguranzas(): void {
     const placas = this.getPlacas();
     if (placas) {
@@ -75,6 +85,9 @@ export class DetallesAutomovilComponent {
     }
   }
 
+  /**
+   * Obtiene los registros de combustibles del automovil desde la API
+   */
   getRegistrosCombustibles(): void {
     const placas = this.getPlacas();
     if (placas) {
@@ -86,6 +99,9 @@ export class DetallesAutomovilComponent {
     }
   }
 
+  /**
+   * Obtiene los detalles del automovil desde la API
+   */
   getAutomovilDetails(): void {
     const placas = this.getPlacas();
     if (placas) {
@@ -97,12 +113,26 @@ export class DetallesAutomovilComponent {
     }
   }
 
+  /**
+   * Navega a la lista de automoviles y limpia el formulario
+   */
   navigateToList(): void {
     this.router.navigate(['admin/automoviles/lista']);
     this.automovilForm.reset();
   }
 
+  /**
+   * Navega a la edición del automovil
+   */
   navigateToEdit(): void {
     //this.router.navigate([`admin/automoviles/${1}/editar`]);
+  }
+
+  getImage(): string {
+    if (this.automovilForm.value.IMAGEN) {
+      return this.automovilForm.value.IMAGEN;
+    }
+
+    return 'https://i.imgur.com/noigPmr.png';
   }
 }

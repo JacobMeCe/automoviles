@@ -46,9 +46,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Function to post form
-   * @description This function send the form to the API
-   * and show a confirmation alert
+   * Función para enviar formulario
    */
   postForm(): void {
     console.log(this.automovilForm.value);
@@ -99,9 +97,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Function to get image
-   * @description This function get the image from the input
-   * @param event
+   * Función para seleccionar archivo
    */
   onFileSelected(event: any): void {
     const image = this.renderer.selectRootElement('#imagePreview');
@@ -110,10 +106,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Functions to drag and drop image
-   * @description This functions are used to drag and drop an image
-   * to the input
-   * @param event
+   * Función para cambiar el título del dropzone al arrastrar sobre él
    */
   onDragOver(event: any): void {
     event.preventDefault();
@@ -121,10 +114,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Functions to drag and drop image
-   * @description This functions are used to drag and drop an image
-   * to the input
-   * @param event
+   * Función para cambiar el título del dropzone al salir de él
    */
   onDragLeave(event: any): void {
     event.preventDefault();
@@ -138,10 +128,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Functions to drag and drop image
-   * @description This functions are used to drag and drop an image
-   * to the input
-   * @param event
+   * Función para prevenir el comportamiento por defecto al soltar un archivo
    */
   onDrop(event: any): void {
     event.preventDefault();
@@ -176,9 +163,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Function to preview image
-   * @param file
-   * @param imgElement
+   * Función para previsualizar imagen
    */
   previewImage(file: File, imgElement: any): void {
     this.fileSelected = file;
@@ -201,9 +186,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Function to remove image from preview
-   * @description This function remove the image from the preview
-   * and change the title to the default
+   * Función para limpiar imagen
    */
   clearImage(): void {
     const image = this.renderer.selectRootElement('#imagePreview');
@@ -214,8 +197,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Function to change title
-   * @param title
+   * Función para cambiar el título del dropzone
    */
   changeDropTitle(title: string): void {
     const contentTitle = this.renderer.selectRootElement('#dropTitle');
@@ -223,8 +205,7 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Function to view details
-   * @description This function redirect to the details page
+   * Función para navegar a la lista de automoviles
    */
   navigateToList(): void {
     this.router.navigate(['admin/automoviles/lista']);

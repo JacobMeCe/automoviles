@@ -29,9 +29,9 @@
         <div class="row justify-content-center" style="border: solid; border-radius: 2vh; border-color: rgb(255, 255, 255); box-shadow: -5px 6px 20px 0px rgba(0, 0, 0, 0.753)">
           <div class="col-12 col-md-8 col-lg-8 col-xl-6">
             <div class="row">
-              <div class="text-center mt-2">
-                <img src="https://i.imgur.com/noigPmr.png" height="100" width="130" alt="" />
-                <h1>Datos del Vehículo</h1>
+              <div class="text-center mt-4">
+                <!-- <img src="https://i.imgur.com/noigPmr.png" height="100" width="130" alt="" /> -->
+                <h1>Datos del Automóvil</h1>
               </div>
             </div>
 
@@ -39,7 +39,7 @@
             <form [formGroup]="this.automovilForm">
               <div>
                 <div class="text-center mt-4">
-                  <img id="imagePreview" height="100" width="100" alt="" />
+                  <img id="imagePreview" [src]="getImage()" height="100%" width="300" alt="" />
                 </div>
                 <div class="text-center mt-4" *ngIf="this.getUserType() === 'Admin'">
                   <button class="custom-button inf w-25" id="searchButton" type="button" (click)="this.navigateToEdit()">Editar</button>
@@ -51,17 +51,17 @@
                   </div>
                   <div class="col-12 form-floating mt-4 col-md mr-2">
                     <input class="custom-input form-control" id="tipoAutomovilInput" readonly placeholder="" formControlName="TIPO_AUTOMOVIL" />
-                    <label for="tipoAutomovilInput">Tipo de vehiculo</label>
+                    <label for="tipoAutomovilInput">Tipo de Automóvil</label>
                   </div>
                   <div class="col-12 form-floating mt-4 col-md">
                     <input class="custom-input form-control" id="marcaInput" readonly placeholder="" formControlName="MARCA" />
-                    <label for="marcaInput">Marca vehiculo</label>
+                    <label for="marcaInput">Marca del Automóvil</label>
                   </div>
                 </div>
                 <div class="row no-gutters form-floating">
                   <div class="col-12 form-floating mt-4 col-md mr-2">
                     <input class="custom-input form-control" id="modelInput" readonly placeholder="" formControlName="MODELO" />
-                    <label for="modelInput">Sub-Marca vehiculo</label>
+                    <label for="modelInput">Sub-Marca del Automóvil</label>
                   </div>
                   <div class="col-12 form-floating mt-4 col-md mr-2">
                     <input class="custom-input form-control" id="colorInput" readonly placeholder="" formControlName="COLOR" />
@@ -69,7 +69,7 @@
                   </div>
                   <div class="col-12 form-floating mt-4 col-md">
                     <input class="custom-input form-control" id="numeroSerieInput" readonly placeholder="" formControlName="NUMERO_SERIE" />
-                    <label for="numeroSerieInput">Numero de serie</label>
+                    <label for="numeroSerieInput">Numero de Serie</label>
                   </div>
                 </div>
                 <div class="row no-gutters form-floating">
