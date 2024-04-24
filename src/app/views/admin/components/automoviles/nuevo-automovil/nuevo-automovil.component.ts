@@ -4,7 +4,6 @@ import { GeneralService } from 'src/services/general.service';
 import { SweetAlertService } from 'src/services/sweet-alert.service';
 import { AutomovilForm } from './form/automovil.form';
 import { FirebaseService } from '../../../../../../services/firebase.service';
-import { Automovil } from '../../../../../../interface/automovil/automovil.interface';
 import { FormGroup } from '@angular/forms';
 import { Departmento } from '../../../../../../utils/enum/departmento.enum';
 import { TipoAutomovil } from '../../../../../../utils/enum/tipo-automovil.enum';
@@ -50,7 +49,6 @@ export class NuevoAutomovilComponent {
    * Function to post form
    * @description This function send the form to the API
    * and show a confirmation alert
-   * @param form
    */
   postForm(): void {
     if (this.automovilForm.invalid) {
@@ -69,19 +67,18 @@ export class NuevoAutomovilComponent {
       .then(async (res: any) => {
         if (!res.isConfirmed) return;
 
-        /*
+        this.automovilForm.patchValue({
+          IMAGE: this.fileSelected,
+        });
 
-        form.IMAGE = await this.store.uploadImage(
-          this.fileSelected,
-          form.PLATES,
-        );
-
-        this.api.newVehicle(form).subscribe(() => {
+        this.api.nuevoAutomovil(this.automovilForm.value).subscribe(() => {
           this.alerts
             .realizado('Completado', 'Se ha enviado la solicitud con exito')
             .then((res: any) => {
               if (res.isConfirmed) {
-                this.router.navigate(['admin/lista-automoviles-nuevo-automovil/']);
+                this.router.navigate([
+                  'admin/lista-automoviles-nuevo-automovil/',
+                ]);
               }
             })
             .catch((e) => {
@@ -90,7 +87,6 @@ export class NuevoAutomovilComponent {
             });
         });
 
-         */
         this.automovilForm.reset();
       });
   }

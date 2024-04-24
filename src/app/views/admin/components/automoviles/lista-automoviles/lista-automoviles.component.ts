@@ -65,9 +65,10 @@ export class ListaAutomovilesComponent {
   }
 
   getListaAutomoviles(): void {
-    this.automovilService.getAutomoviles().subscribe((res: RespuestaAPI) => {
+    this.api.listaAutomoviles().subscribe((res: RespuestaAPI) => {
       if (res.status === 200) {
         this.automoviles = res.body;
+        console.log(this.automoviles);
       } else {
         this.automoviles = [];
       }

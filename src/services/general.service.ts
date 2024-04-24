@@ -273,7 +273,7 @@ export class GeneralService {
     );
   }
 
-  newVehicle(form: Automovil) {
+  nuevoAutomovil(form: Automovil) {
     const direccion = this.url + 'autlan/auto/nuevo';
     return this.http.post<RespuestaAPI>(direccion, form);
   }
@@ -282,11 +282,11 @@ export class GeneralService {
     return this.http.get<RespuestaAPI>(API + `/autlan/lista/autos/completa`);
   }
 
-  getVehicleById(id: number) {
+  getAutomovil(id: number) {
     return this.http.get<RespuestaAPI>(API + `/autlan/auto/${id}`);
   }
 
-  updateVehicle(form: Automovil): Observable<RespuestaAPI> {
+  actualizarAutomovil(form: Automovil): Observable<RespuestaAPI> {
     return this.http.put<RespuestaAPI>(API + `/autlan/auto/actualizar`, form);
   }
 }
