@@ -114,6 +114,18 @@ export class DetallesAutomovilComponent {
   }
 
   /**
+   * Obtiene la imagen del automovil
+   * @returns imagen
+   */
+  getImage(): string {
+    if (this.automovilForm.value.IMAGEN) {
+      return this.automovilForm.value.IMAGEN;
+    }
+
+    return 'https://i.imgur.com/noigPmr.png';
+  }
+
+  /**
    * Navega a la lista de automoviles y limpia el formulario
    */
   navigateToList(): void {
@@ -124,15 +136,5 @@ export class DetallesAutomovilComponent {
   /**
    * Navega a la edición del automovil
    */
-  navigateToEdit(): void {
-    //this.router.navigate([`admin/automoviles/${1}/editar`]);
-  }
-
-  getImage(): string {
-    if (this.automovilForm.value.IMAGEN) {
-      return this.automovilForm.value.IMAGEN;
-    }
-
-    return 'https://i.imgur.com/noigPmr.png';
-  }
+  navigateToEdit(): void {}
 }
