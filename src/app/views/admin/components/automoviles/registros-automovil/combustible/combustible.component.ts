@@ -3,8 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { CombustibleForm } from './form/combustible.form';
 import { ActivatedRoute } from '@angular/router';
 import { SweetAlertService } from '../../../../../../../services/sweet-alert.service';
-import { RecordsGeneralService } from '../../../../../../../services/test/records-general.service';
 import { DetallesAutomovilComponent } from '../../detalles-automovil/detalles-automovil.component';
+import { GeneralService } from '../../../../../../../services/general.service';
 
 @Component({
   selector: 'app-combustible',
@@ -18,7 +18,7 @@ export class CombustibleComponent {
   constructor(
     private readonly activo: ActivatedRoute,
     private readonly alerts: SweetAlertService,
-    private readonly recordsService: RecordsGeneralService,
+    private readonly api: GeneralService,
     private readonly detallesAutomovil: DetallesAutomovilComponent,
   ) {
     this.combustibleForm = CombustibleForm;
@@ -38,15 +38,16 @@ export class CombustibleComponent {
     });
   }
 
+  /**
+   * Function to get placas from URL
+   * @returns string | null
+   */
   getPlacas(): string | null {
     return this.activo.snapshot.paramMap.get('placas');
   }
 
   /**
-   * Function to post form
-   * @description This function send the form to the API
-   * and show a confirmation alert
-   * @param form
+   * Function to post form data to API
    */
   postForm(): void {
     this.combustibleForm.patchValue({ PLACAS: this.getPlacas() });
@@ -62,8 +63,8 @@ export class CombustibleComponent {
     this.alerts
       .realizado('Registro exitoso', 'El registro se ha guardado correctamente')
       .then(() => {
-        this.recordsService
-          .newCombustible(this.combustibleForm.value)
+        this.api
+          .nuevoCombustible(this.combustibleForm.value)
           .subscribe((response: any) => {
             console.log(this.combustibleForm.value);
             console.log(response);
@@ -78,10 +79,16 @@ export class CombustibleComponent {
       });
   }
 
+  /**
+   * Function to update the table with the new data
+   */
   updateRegistrosCombustibles(): void {
     this.detallesAutomovil.getRegistrosCombustibles();
   }
 
+  /**
+   * Function to close the modal
+   */
   dismissModal(): void {
     this.closeButton.nativeElement.click();
   }

@@ -4,8 +4,8 @@ import { AseguranzaForm } from './form/aseguranza.form';
 import { ActivatedRoute } from '@angular/router';
 import { SweetAlertService } from '../../../../../../../services/sweet-alert.service';
 import { DetallesAutomovilComponent } from '../../detalles-automovil/detalles-automovil.component';
-import { RecordsGeneralService } from '../../../../../../../services/test/records-general.service';
 import { RespuestaAPI } from '../../../../../../../interface/general/api-responses.model';
+import { GeneralService } from '../../../../../../../services/general.service';
 
 @Component({
   selector: 'app-aseguranza',
@@ -19,7 +19,7 @@ export class AseguranzaComponent {
   constructor(
     private readonly activo: ActivatedRoute,
     private readonly alerts: SweetAlertService,
-    private readonly recordsService: RecordsGeneralService,
+    private readonly api: GeneralService,
     private readonly detallesAutomovil: DetallesAutomovilComponent,
   ) {
     this.aseguranzaForm = AseguranzaForm;
@@ -39,14 +39,16 @@ export class AseguranzaComponent {
     });
   }
 
+  /**
+   * Function to get placas from URL
+   * @returns string | null
+   */
   getPlacas(): string | null {
     return this.activo.snapshot.paramMap.get('placas');
   }
 
   /**
-   * Function to post form
-   * @description This function send the form to the API
-   * and show a confirmation alert
+   * Function to post form data to API
    */
   postForm(): void {
     this.aseguranzaForm.patchValue({ PLACAS: this.getPlacas() });
@@ -62,8 +64,8 @@ export class AseguranzaComponent {
     this.alerts
       .realizado('Registro exitoso', 'El registro se ha guardado correctamente')
       .then(() => {
-        this.recordsService
-          .newAseguranza(this.aseguranzaForm.value)
+        this.api
+          .nuevaAseguranza(this.aseguranzaForm.value)
           .subscribe((response: RespuestaAPI) => {
             if (response.status === 201) {
               this.updateRegistrosAseguranzas();
@@ -76,10 +78,16 @@ export class AseguranzaComponent {
       });
   }
 
+  /**
+   * Function to update the table with the new data
+   */
   updateRegistrosAseguranzas(): void {
     this.detallesAutomovil.getRegistrosAseguranzas();
   }
 
+  /**
+   * Function to close the modal
+   */
   dismissModal(): void {
     this.closeButton.nativeElement.click();
   }

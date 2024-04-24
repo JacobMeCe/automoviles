@@ -3,9 +3,9 @@ import { FormGroup } from '@angular/forms';
 import { ServicioForm } from './form/servicio.form';
 import { ActivatedRoute } from '@angular/router';
 import { SweetAlertService } from '../../../../../../../services/sweet-alert.service';
-import { RecordsGeneralService } from '../../../../../../../services/test/records-general.service';
 import { DetallesAutomovilComponent } from '../../detalles-automovil/detalles-automovil.component';
 import { RespuestaAPI } from '../../../../../../../interface/general/api-responses.model';
+import { GeneralService } from '../../../../../../../services/general.service';
 
 @Component({
   selector: 'app-servicio',
@@ -19,21 +19,22 @@ export class ServicioComponent {
   constructor(
     private readonly activo: ActivatedRoute,
     private readonly alerts: SweetAlertService,
-    private readonly recordsService: RecordsGeneralService,
+    private readonly api: GeneralService,
     private readonly detallesAutomovil: DetallesAutomovilComponent,
   ) {
     this.servicioForm = ServicioForm;
   }
 
+  /**
+   * Function to get placas from URL
+   * @returns string | null
+   */
   getPlacas(): string | null {
     return this.activo.snapshot.paramMap.get('placas');
   }
 
   /**
-   * Function to post form
-   * @description This function send the form to the API
-   * and show a confirmation alert
-   * @param form
+   * Function to post form data to API
    */
   postForm(): void {
     this.servicioForm.patchValue({ PLACAS: this.getPlacas() });
@@ -49,8 +50,8 @@ export class ServicioComponent {
     this.alerts
       .realizado('Registro exitoso', 'El registro se ha guardado correctamente')
       .then(() => {
-        this.recordsService
-          .newServicio(this.servicioForm.value)
+        this.api
+          .nuevoServicio(this.servicioForm.value)
           .subscribe((response: RespuestaAPI) => {
             if (response.status === 201) {
               this.updateRegistrosServicios();
@@ -63,10 +64,16 @@ export class ServicioComponent {
       });
   }
 
+  /**
+   * Function to update registros servicios
+   */
   updateRegistrosServicios(): void {
     this.detallesAutomovil.getRegistrosServicios();
   }
 
+  /**
+   * Function to dismiss modal
+   */
   dismissModal(): void {
     this.closeButton.nativeElement.click();
   }

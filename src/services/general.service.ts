@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { RespuestaAPI } from 'src/interface/general/api-responses.model';
 import { Observable, Subject } from 'rxjs';
 import { Automovil } from '../interface/automovil/automovil.interface';
+import { Servicio } from '../interface/automovil/registros-automovil/servicio.interface';
+import { Combustible } from '../interface/automovil/registros-automovil/combustible.interface';
+import { Aseguranza } from '../interface/automovil/registros-automovil/aseguranza.interface';
 
 const API = 'https://api.guarderia.saion.mx';
 
@@ -312,5 +315,23 @@ export class GeneralService {
     return this.http.get<RespuestaAPI>(
       API + `/autlan/lista/aseguranza/detalles`,
     );
+  }
+
+  nuevoServicio(form: Servicio) {
+    return this.http.post<RespuestaAPI>(
+      API + `/autlan/servicio/autos/nuevo/dato`,
+      form,
+    );
+  }
+
+  nuevoCombustible(form: Combustible) {
+    return this.http.post<RespuestaAPI>(
+      API + `/autlan/gasolina/autos/nuevo/dato`,
+      form,
+    );
+  }
+
+  nuevaAseguranza(form: Aseguranza) {
+    return this.http.post<RespuestaAPI>(API + `/autlan/aseguranza/nuevo`, form);
   }
 }
