@@ -66,9 +66,7 @@ export class CombustibleComponent {
         this.api
           .nuevoCombustible(this.combustibleForm.value)
           .subscribe((response: any) => {
-            console.log(this.combustibleForm.value);
-            console.log(response);
-            if (response.status === 201) {
+            if (response.status === 200) {
               this.updateRegistrosCombustibles();
               this.combustibleForm.reset();
               this.dismissModal();
@@ -83,7 +81,7 @@ export class CombustibleComponent {
    * Function to update the table with the new data
    */
   updateRegistrosCombustibles(): void {
-    this.detallesAutomovil.getRegistrosCombustibles();
+    this.detallesAutomovil.getListaCombustible();
   }
 
   /**

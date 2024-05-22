@@ -53,7 +53,7 @@ export class ServicioComponent {
         this.api
           .nuevoServicio(this.servicioForm.value)
           .subscribe((response: RespuestaAPI) => {
-            if (response.status === 201) {
+            if (response.status === 200) {
               this.updateRegistrosServicios();
               this.servicioForm.reset();
               this.dismissModal();

@@ -38,7 +38,7 @@ export class DetallesAutomovilComponent {
     this.getAutomovilDetails();
     this.getRegistrosServicios();
     this.getRegistrosAseguranzas();
-    this.getRegistrosCombustibles();
+    this.getListaCombustible();
   }
 
   /**
@@ -65,7 +65,20 @@ export class DetallesAutomovilComponent {
     if (placas) {
       this.api.listaServicios().subscribe((res: RespuestaAPI) => {
         if (res.status === 200) {
-          this.servicios = res.body;
+          this.servicios = res.body.filter((servicio: Servicio) => {
+            return servicio.PLACAS === placas;
+          });
+
+          // Ordenar los registros de combustible en orden descendente por 'fecha'
+          this.servicios.sort((a: Servicio, b: Servicio) => {
+            if (a.FECHA < b.FECHA) {
+              return 1;
+            } else if (a.FECHA > b.FECHA) {
+              return -1;
+            } else {
+              return 0;
+            }
+          });
         }
       });
     }
@@ -79,7 +92,20 @@ export class DetallesAutomovilComponent {
     if (placas) {
       this.api.listaAseguranzas().subscribe((res: RespuestaAPI) => {
         if (res.status === 200) {
-          this.aseguranzas = res.body;
+          this.aseguranzas = res.body.filter((aseguranza: Aseguranza) => {
+            return aseguranza.PLACAS === placas;
+          });
+
+          // Ordenar los registros de combustible en orden descendente por 'fecha'
+          this.aseguranzas.sort((a: Aseguranza, b: Aseguranza) => {
+            if (a.FECHA < b.FECHA) {
+              return 1;
+            } else if (a.FECHA > b.FECHA) {
+              return -1;
+            } else {
+              return 0;
+            }
+          });
         }
       });
     }
@@ -88,12 +114,25 @@ export class DetallesAutomovilComponent {
   /**
    * Obtiene los registros de combustibles del automovil desde la API
    */
-  getRegistrosCombustibles(): void {
+  getListaCombustible(): void {
     const placas = this.getPlacas();
     if (placas) {
       this.api.listaCombustibles().subscribe((res: RespuestaAPI) => {
         if (res.status === 200) {
-          this.combustibles = res.body;
+          this.combustibles = res.body.filter(
+            (combustible: Combustible) => combustible.PLACAS === placas,
+          );
+
+          // Ordenar los registros de combustible en orden descendente por 'fecha'
+          this.combustibles.sort((a: Combustible, b: Combustible) => {
+            if (a.FECHA < b.FECHA) {
+              return 1;
+            } else if (a.FECHA > b.FECHA) {
+              return -1;
+            } else {
+              return 0;
+            }
+          });
         }
       });
     }
@@ -105,9 +144,12 @@ export class DetallesAutomovilComponent {
   getAutomovilDetails(): void {
     const placas = this.getPlacas();
     if (placas) {
-      this.api.detallesAutomovil(placas).subscribe((res: RespuestaAPI) => {
+      this.api.listaAutomoviles().subscribe((res: RespuestaAPI) => {
         if (res.status === 200) {
-          this.automovilForm.setValue(res.body);
+          const automovil = res.body.find(
+            (auto: any) => auto.PLACAS === placas,
+          );
+          this.automovilForm.patchValue(automovil);
         }
       });
     }

@@ -7,7 +7,7 @@ export const CombustibleForm: FormGroup = new FormGroup({
   FOLIO: new FormControl('', Validators.required),
   TIPO_COMBUSTIBLE: new FormControl('', Validators.required),
   LITROS: new FormControl('', Validators.required),
-  STATUS: new FormControl(),
+  ESTATUS: new FormControl(1),
 } as {
   [K in keyof Combustible]: FormControl;
 });

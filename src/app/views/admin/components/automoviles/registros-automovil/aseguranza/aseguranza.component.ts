@@ -67,7 +67,7 @@ export class AseguranzaComponent {
         this.api
           .nuevaAseguranza(this.aseguranzaForm.value)
           .subscribe((response: RespuestaAPI) => {
-            if (response.status === 201) {
+            if (response.status === 200) {
               this.updateRegistrosAseguranzas();
               this.aseguranzaForm.reset();
               this.dismissModal();

@@ -6,7 +6,7 @@ export const ServicioForm: FormGroup = new FormGroup({
   FECHA: new FormControl('', Validators.required),
   DESCRIPCION: new FormControl('', Validators.required),
   KILOMETRAJE: new FormControl('', Validators.required),
-  STATUS: new FormControl(),
+  ESTATUS: new FormControl(1),
 } as {
   [K in keyof Servicio]: FormControl;
 });
