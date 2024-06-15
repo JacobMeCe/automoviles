@@ -9,11 +9,11 @@ import { Departmento } from '../../../../../../utils/enum/departmento.enum';
 import { TipoAutomovil } from '../../../../../../utils/enum/tipo-automovil.enum';
 
 @Component({
-  selector: 'app-nuevo-automovil',
-  templateUrl: './nuevo-automovil.component.html',
-  styleUrls: ['./nuevo-automovil.component.scss'],
+  selector: 'app-nuevo-vehiculo',
+  templateUrl: './nuevo-vehiculo.component.html',
+  styleUrls: ['./nuevo-vehiculo.component.scss'],
 })
-export class NuevoAutomovilComponent {
+export class NuevoVehiculoComponent {
   private fileSelected: File;
   protected automovilForm: FormGroup<any>;
   protected tiposAutomovil: string[];
@@ -205,9 +205,10 @@ export class NuevoAutomovilComponent {
   }
 
   /**
-   * Función para navegar a la lista de automoviles
+   * Función para navegar a la lista de vehiculo
    */
   navigateToList(): void {
-    this.router.navigate(['admin/automoviles/lista']);
+    this.router.navigate(['admin/vehiculos']);
+    this.automovilForm.reset();
   }
 }

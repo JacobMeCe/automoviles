@@ -1,28 +1,28 @@
 import { RouterModule, Routes } from '@angular/router';
-import { ListaAutomovilesComponent } from './lista-automoviles/lista-automoviles.component';
+import { ListaVehiculosComponent } from './lista-vehiculos/lista-vehiculos.component';
 import { AuthEGuard } from '../../../../core/guard/authE.guard';
-import { NuevoAutomovilComponent } from './nuevo-automovil/nuevo-automovil.component';
-import { DetallesAutomovilComponent } from './detalles-automovil/detalles-automovil.component';
+import { NuevoVehiculoComponent } from './nuevo-vehiculo/nuevo-vehiculo.component';
+import { DetallesVehiculoComponent } from './detalles-vehiculo/detalles-vehiculo.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
-    path: 'automoviles',
+    path: '',
     children: [
       {
-        path: 'lista',
-        component: ListaAutomovilesComponent,
+        path: '',
+        component: ListaVehiculosComponent,
         canActivate: [AuthEGuard],
       },
       {
         path: 'nuevo',
-        component: NuevoAutomovilComponent,
+        component: NuevoVehiculoComponent,
         canActivate: [AuthEGuard],
       },
       {
         path: ':placas/detalles',
-        component: DetallesAutomovilComponent,
+        component: DetallesVehiculoComponent,
         canActivate: [AuthEGuard],
       },
     ],
@@ -33,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes), CommonModule],
   exports: [RouterModule],
 })
-export class AutomovilRoutingModule {}
+export class VehiculoRoutingModule {}

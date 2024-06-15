@@ -5,10 +5,20 @@ import { CommonModule } from '@angular/common';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./components/dashboard/dashboard.module').then(
-        (m) => m.DashboardModule,
-      ),
+    children: [
+      {
+        path: '',
+        redirectTo: 'vehiculos',
+        pathMatch: 'full',
+      },
+      {
+        path: 'vehiculos',
+        loadChildren: () =>
+          import('./components/vehiculo/vehiculo.module').then(
+            (m) => m.VehiculoModule,
+          ),
+      },
+    ],
   },
 ];
 

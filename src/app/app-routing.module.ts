@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './views/admin/components/LOGIN/login/login.component';
 
 const routes: Routes = [
   {
@@ -11,18 +10,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'admin/automoviles/lista',
+        redirectTo: 'admin',
         pathMatch: 'full',
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
       },
       {
         path: 'admin',
         component: AdminLayoutComponent,
         loadChildren: () =>
           import('./views/admin/admin.module').then((m) => m.AdminModule),
+      },
+      {
+        path: '**',
+        redirectTo: 'admin',
       },
     ],
   },

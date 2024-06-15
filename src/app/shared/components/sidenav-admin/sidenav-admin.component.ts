@@ -5,7 +5,7 @@ import { GeneralService } from 'src/services/general.service';
 @Component({
   selector: 'app-sidenav-admin',
   templateUrl: './sidenav-admin.component.html',
-  styleUrls: ['./sidenav-admin.component.scss']
+  styleUrls: ['./sidenav-admin.component.scss'],
 })
 export class SidenavAdminComponent implements OnInit {
   token = false;
@@ -16,15 +16,15 @@ export class SidenavAdminComponent implements OnInit {
   facebook: any;
   youtube: any;
   logo: any;
-  constructor(private router: Router, private service: GeneralService) { }
+  constructor(
+    private router: Router,
+    private service: GeneralService,
+  ) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem("token")) {
-      this.token = true;
-    } else {
-      this.token = false
-    }
-    this.service.verBanner().subscribe(res => {
+    this.token = this.checkToken();
+
+    this.service.verBanner().subscribe((res) => {
       this.bann = res.body[0];
       this.dato1 = this.bann.DATO1;
       this.dato2 = this.bann.DATO2;
@@ -32,19 +32,22 @@ export class SidenavAdminComponent implements OnInit {
       this.facebook = this.bann.FACEBOOK;
       this.youtube = this.bann.YOUTUBE;
       this.logo = this.bann.LOGO;
+    });
+  }
 
-    })
+  checkToken(): boolean {
+    return !!localStorage.getItem('token');
   }
 
   instituto() {
-    localStorage.setItem('im', '1')
+    localStorage.setItem('im', '1');
   }
   dif() {
-    localStorage.setItem('dif', '1')
+    localStorage.setItem('dif', '1');
   }
   cerrar() {
-    localStorage.clear()
-    location.reload()
+    localStorage.clear();
+    location.reload();
   }
   subirDocumento() {
     localStorage.setItem('articulo', '8');

@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { CombustibleForm } from './form/combustible.form';
 import { ActivatedRoute } from '@angular/router';
 import { SweetAlertService } from '../../../../../../../services/sweet-alert.service';
-import { DetallesAutomovilComponent } from '../../detalles-automovil/detalles-automovil.component';
+import { DetallesVehiculoComponent } from '../../detalles-vehiculo/detalles-vehiculo.component';
 import { GeneralService } from '../../../../../../../services/general.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class CombustibleComponent {
     private readonly activo: ActivatedRoute,
     private readonly alerts: SweetAlertService,
     private readonly api: GeneralService,
-    private readonly detallesAutomovil: DetallesAutomovilComponent,
+    private readonly detallesAutomovil: DetallesVehiculoComponent,
   ) {
     this.combustibleForm = CombustibleForm;
   }
@@ -53,28 +53,21 @@ export class CombustibleComponent {
     this.combustibleForm.patchValue({ PLACAS: this.getPlacas() });
 
     if (this.combustibleForm.invalid) {
-      this.alerts.alertaError(
-        'Error de solicitud',
-        'Todos los campos son obligatorios',
-      );
+      this.alerts.alertaError('Error de solicitud', 'Todos los campos son obligatorios');
       return;
     }
 
-    this.alerts
-      .realizado('Registro exitoso', 'El registro se ha guardado correctamente')
-      .then(() => {
-        this.api
-          .nuevoCombustible(this.combustibleForm.value)
-          .subscribe((response: any) => {
-            if (response.status === 200) {
-              this.updateRegistrosCombustibles();
-              this.combustibleForm.reset();
-              this.dismissModal();
-            } else {
-              this.alerts.alertaError('Error', response.json);
-            }
-          });
+    this.alerts.realizado('Registro exitoso', 'El registro se ha guardado correctamente').then(() => {
+      this.api.nuevoCombustible(this.combustibleForm.value).subscribe((response: any) => {
+        if (response.status === 200) {
+          this.updateRegistrosCombustibles();
+          this.combustibleForm.reset();
+          this.dismissModal();
+        } else {
+          this.alerts.alertaError('Error', response.json);
+        }
       });
+    });
   }
 
   /**

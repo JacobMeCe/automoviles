@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { AseguranzaForm } from './form/aseguranza.form';
 import { ActivatedRoute } from '@angular/router';
 import { SweetAlertService } from '../../../../../../../services/sweet-alert.service';
-import { DetallesAutomovilComponent } from '../../detalles-automovil/detalles-automovil.component';
+import { DetallesVehiculoComponent } from '../../detalles-vehiculo/detalles-vehiculo.component';
 import { RespuestaAPI } from '../../../../../../../interface/general/api-responses.model';
 import { GeneralService } from '../../../../../../../services/general.service';
 
@@ -20,7 +20,7 @@ export class AseguranzaComponent {
     private readonly activo: ActivatedRoute,
     private readonly alerts: SweetAlertService,
     private readonly api: GeneralService,
-    private readonly detallesAutomovil: DetallesAutomovilComponent,
+    private readonly detallesAutomovil: DetallesVehiculoComponent,
   ) {
     this.aseguranzaForm = AseguranzaForm;
   }
@@ -54,28 +54,21 @@ export class AseguranzaComponent {
     this.aseguranzaForm.patchValue({ PLACAS: this.getPlacas() });
 
     if (this.aseguranzaForm.invalid) {
-      this.alerts.alertaError(
-        'Error de solicitud',
-        'Todos los campos son obligatorios',
-      );
+      this.alerts.alertaError('Error de solicitud', 'Todos los campos son obligatorios');
       return;
     }
 
-    this.alerts
-      .realizado('Registro exitoso', 'El registro se ha guardado correctamente')
-      .then(() => {
-        this.api
-          .nuevaAseguranza(this.aseguranzaForm.value)
-          .subscribe((response: RespuestaAPI) => {
-            if (response.status === 200) {
-              this.updateRegistrosAseguranzas();
-              this.aseguranzaForm.reset();
-              this.dismissModal();
-            } else {
-              this.alerts.alertaError('Error', response.json);
-            }
-          });
+    this.alerts.realizado('Registro exitoso', 'El registro se ha guardado correctamente').then(() => {
+      this.api.nuevaAseguranza(this.aseguranzaForm.value).subscribe((response: RespuestaAPI) => {
+        if (response.status === 200) {
+          this.updateRegistrosAseguranzas();
+          this.aseguranzaForm.reset();
+          this.dismissModal();
+        } else {
+          this.alerts.alertaError('Error', response.json);
+        }
       });
+    });
   }
 
   /**

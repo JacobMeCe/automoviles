@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { GeneralService } from 'src/services/general.service';
 import { Automovil } from '../../../../../../interface/automovil/automovil.interface';
 import { RespuestaAPI } from '../../../../../../interface/general/api-responses.model';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
-  selector: 'app-lista-automoviles',
-  templateUrl: './lista-automoviles.component.html',
-  styleUrls: ['./lista-automoviles.component.scss'],
+  selector: 'app-lista-vehiculo',
+  templateUrl: './lista-vehiculos.component.html',
+  styleUrls: ['./lista-vehiculos.component.scss'],
 })
-export class ListaAutomovilesComponent {
+export class ListaVehiculosComponent {
   protected automoviles: Automovil[];
   protected currentPage: number;
   protected searchTerm: string = '';
@@ -18,11 +19,13 @@ export class ListaAutomovilesComponent {
   constructor(
     private api: GeneralService,
     private router: Router,
+    private viewportScroller: ViewportScroller,
   ) {
     this.currentPage = 1;
   }
 
   ngOnInit(): void {
+    this.viewportScroller.scrollToPosition([0, 0]);
     this.getListaAutomoviles();
   }
 
@@ -68,7 +71,7 @@ export class ListaAutomovilesComponent {
    * Navega a la vista de registro de un nuevo automóvil
    */
   navigateToRegister(): void {
-    this.router.navigate(['admin/automoviles/nuevo']);
+    this.router.navigate(['admin/vehiculos/nuevo']);
   }
 
   /**
@@ -76,6 +79,6 @@ export class ListaAutomovilesComponent {
    * @param automovil
    */
   navigateToDetails(automovil: Automovil): void {
-    this.router.navigate([`admin/automoviles/${automovil.PLACAS}/detalles`]);
+    this.router.navigate([`admin/vehiculos/${automovil.PLACAS}/detalles`]);
   }
 }

@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/services/auth.service';
 import { Router } from '@angular/router';
 import { RespuestaAPI } from 'src/interface/general/api-responses.model';
-import { loginI } from 'src/interface/general/usuario.model';
 import { SweetAlertService } from 'src/services/sweet-alert.service';
 
 @Component({
@@ -68,7 +67,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', dataResponse.body);
 
           this.api.logueado = true;
-          this.router.navigate(['/admin/solicitudes']);
+          this.router.navigate(['/admin/vehiculos']).then(() => {
+            location.reload();
+          });
         } else {
           this.iniciandoSesion = false;
           this.errorStatus = true;

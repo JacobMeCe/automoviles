@@ -5,16 +5,17 @@ import { GeneralService } from 'src/services/general.service';
 import { Servicio } from '../../../../../../interface/automovil/registros-automovil/servicio.interface';
 import { Aseguranza } from '../../../../../../interface/automovil/registros-automovil/aseguranza.interface';
 import { Combustible } from '../../../../../../interface/automovil/registros-automovil/combustible.interface';
-import { AutomovilForm } from '../nuevo-automovil/form/automovil.form';
+import { AutomovilForm } from '../nuevo-vehiculo/form/automovil.form';
 import { FormGroup } from '@angular/forms';
 import { RespuestaAPI } from '../../../../../../interface/general/api-responses.model';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
-  selector: 'app-detalles-automovil',
-  templateUrl: './detalles-automovil.component.html',
-  styleUrls: ['./detalles-automovil.component.scss'],
+  selector: 'app-detalles-vehiculo',
+  templateUrl: './detalles-vehiculo.component.html',
+  styleUrls: ['./detalles-vehiculo.component.scss'],
 })
-export class DetallesAutomovilComponent {
+export class DetallesVehiculoComponent {
   protected readonly automovilForm: FormGroup<any>;
   protected servicios: Servicio[];
   protected aseguranzas: Aseguranza[];
@@ -25,6 +26,7 @@ export class DetallesAutomovilComponent {
     private api: GeneralService,
     private router: Router,
     private activo: ActivatedRoute,
+    private viewportScroller: ViewportScroller,
   ) {
     this.automovilForm = AutomovilForm;
     this.currentPage = {
@@ -35,6 +37,7 @@ export class DetallesAutomovilComponent {
   }
 
   ngOnInit(): void {
+    this.viewportScroller.scrollToPosition([0, 0]);
     this.getAutomovilDetails();
     this.getRegistrosServicios();
     this.getRegistrosAseguranzas();
@@ -168,10 +171,10 @@ export class DetallesAutomovilComponent {
   }
 
   /**
-   * Navega a la lista de automoviles y limpia el formulario
+   * Navega a la lista de vehiculo y limpia el formulario
    */
   navigateToList(): void {
-    this.router.navigate(['admin/automoviles/lista']);
+    this.router.navigate(['admin/vehiculos']);
     this.automovilForm.reset();
   }
 

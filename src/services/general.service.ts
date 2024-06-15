@@ -54,15 +54,11 @@ export class GeneralService {
   }
 
   listaSolicitudes2() {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/lista/solicitudes/progreso`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/lista/solicitudes/progreso`);
   }
 
   listaSolicitudes3() {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/lista/solicitudes/terminada`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/lista/solicitudes/terminada`);
   }
 
   estatusSolicitud(estatus: any, id: any) {
@@ -102,15 +98,11 @@ export class GeneralService {
   }
 
   buscar(columna: string, valor: any) {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/rc/buscar/${columna}/${valor}`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/rc/buscar/${columna}/${valor}`);
   }
 
   buscarConfe(columna: string, valor: any) {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/consulta/confe/${columna}/${valor}`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/consulta/confe/${columna}/${valor}`);
   }
 
   buscarPC(columna: string, valor: any) {
@@ -151,33 +143,23 @@ export class GeneralService {
   }
 
   obtenerA82018(id: any, inciso: any, ano: any, carpeta: any) {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/${id}/${inciso}/${ano}/${carpeta}`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/docs/A8/${id}/${inciso}/${ano}/${carpeta}`);
   }
 
   obtenerA82019(id: any, inciso: any) {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/2019/${id}/${inciso}`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/docs/A8/2019/${id}/${inciso}`);
   }
 
   obtenerA82020(id: any, inciso: any) {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/2020/${id}/${inciso}`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/docs/A8/2020/${id}/${inciso}`);
   }
 
   obtenerA82021(id: any, inciso: any) {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/2021/${id}/${inciso}`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/docs/A8/2021/${id}/${inciso}`);
   }
 
   obtenerA82022(id: any, inciso: any) {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/docs/A8/2022/${id}/${inciso}`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/docs/A8/2022/${id}/${inciso}`);
   }
 
   obtenerSUBSIDIO(id: any, inciso: any) {
@@ -185,14 +167,12 @@ export class GeneralService {
   }
 
   obtenerIdentificadorDocumentos(idEmpresa: any) {
-    const direccion =
-      API + `/preregistro/obtenerIdentificadorDocumentos/${idEmpresa}`;
+    const direccion = API + `/preregistro/obtenerIdentificadorDocumentos/${idEmpresa}`;
     return this.http.get<RespuestaAPI>(direccion);
   }
 
   obtenerIdentificadorDocumentosAutlan(idEmpresa: any) {
-    const direccion =
-      API + `/preregistro/obtenerIdentificadorDocumentos/${idEmpresa}`;
+    const direccion = API + `/preregistro/obtenerIdentificadorDocumentos/${idEmpresa}`;
     return this.http.get<RespuestaAPI>(direccion);
   }
 
@@ -232,7 +212,7 @@ export class GeneralService {
   }
 
   listadoConfe() {
-    const direccion = API + '/autlan/lista-automoviles/confe';
+    const direccion = API + '/autlan/lista-vehiculo/confe';
     return this.http.get<RespuestaAPI>(direccion);
   }
 
@@ -271,9 +251,7 @@ export class GeneralService {
   }
 
   datosPUT(estatus: any, id: any) {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/solicitudes/rc/${estatus}/${id}`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/solicitudes/rc/${estatus}/${id}`);
   }
 
   // --- Peticiones para Automóviles ---
@@ -294,10 +272,7 @@ export class GeneralService {
   }
 
   nuevoServicio(form: Servicio) {
-    return this.http.post<RespuestaAPI>(
-      API + `/autlan/servicio/autos/nuevo/dato`,
-      form,
-    );
+    return this.http.post<RespuestaAPI>(API + `/autlan/servicio/autos/nuevo/dato`, form);
   }
 
   listaCombustibles() {
@@ -305,16 +280,11 @@ export class GeneralService {
   }
 
   nuevoCombustible(form: Combustible) {
-    return this.http.post<RespuestaAPI>(
-      API + `/autlan/gasolina/autos/nuevo/dato`,
-      form,
-    );
+    return this.http.post<RespuestaAPI>(API + `/autlan/gasolina/autos/nuevo/dato`, form);
   }
 
   listaAseguranzas() {
-    return this.http.get<RespuestaAPI>(
-      API + `/autlan/lista/aseguranza/detalles`,
-    );
+    return this.http.get<RespuestaAPI>(API + `/autlan/lista/aseguranza/detalles`);
   }
 
   nuevaAseguranza(form: Aseguranza) {

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Datos solicitud</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="/src/assets/img/favicon.png" rel="icon" />
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/src/assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <section style="background-color: rgb(255, 255, 255); margin-top: 130px;" id="services" class="services section-bg">
+      <div class="animate__animated animate__fadeInDown">
+        <div class="container" style="max-width: 90%;">
+          <div class="text-center mb-4">
+            <h1>Vehículos</h1>
+          </div>
+
+          <div class="text-center mb-4" *ngIf="getUserType() === 'Admin'">
+            <button type="button" class="custom-button submit w-auto" (click)="navigateToRegister()">Agregar Vehículo</button>
+          </div>
+
+          <div class="d-flex justify-content-center mb-4" style="max-width: 50%; margin: 0 auto;">
+            <div class="d-flex flex-row justify-content-around w-100">
+              <select class="form-select w-auto mr-2" name="filtro" id="filtro" [(ngModel)]="selectedFilter">
+                <option value="PLACAS">Placas</option>
+                <option value="DEPARTAMENTO">Departamento</option>
+              </select>
+              <input class="form-control mr-2 h-auto" placeholder="Nombre del documento" [(ngModel)]="searchTerm" (keyup)="buscar()" />
+              <button type="button" class="custom-button inf w-auto" (click)="buscar()">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="pl-5 pr-5">
+            <table class="table table-striped table-hover table-bordered text-center">
+              <thead>
+              <tr>
+                <th scope="col" style="width: 20%">Placas</th>
+                <th scope="col" style="width: 20%">Marca</th>
+                <th scope="col" style="width: 20%">Color</th>
+                <th scope="col" style="width: 30%">Departamento</th>
+                <th scope="col" style="width: 10%">Acciones</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let automovil of automoviles | paginate: { itemsPerPage: 15, currentPage: currentPage, id: 'data' }" (dblclick)="navigateToDetails(automovil)">
+                <th class="align-middle">{{ automovil.PLACAS }}</th>
+                <td class="align-middle">{{ automovil.MARCA }}</td>
+                <td class="align-middle">{{ automovil.COLOR }}</td>
+                <td class="align-middle">{{ automovil.DEPARTAMENTO }}</td>
+                <td>
+                  <button id="saveInput" class="custom-button w-auto inf" (click)="navigateToDetails(automovil)">Examinar</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-center">
+            <pagination-controls id="data" class="my-pagination" (pageChange)="currentPage = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
