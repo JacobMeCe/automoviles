@@ -6,7 +6,7 @@ import { AutomovilForm } from './form/automovil.form';
 import { FirebaseService } from '../../../../../../services/firebase.service';
 import { FormGroup } from '@angular/forms';
 import { Departmento } from '../../../../../../utils/enum/departmento.enum';
-import { TipoAutomovil } from '../../../../../../utils/enum/tipo-automovil.enum';
+import { TipoAutomovil } from '../../../../../../utils/enum/tipo-vehiculo.enum';
 
 @Component({
   selector: 'app-nuevo-vehiculo',
@@ -16,7 +16,7 @@ import { TipoAutomovil } from '../../../../../../utils/enum/tipo-automovil.enum'
 export class NuevoVehiculoComponent {
   private fileSelected: File;
   protected automovilForm: FormGroup<any>;
-  protected tiposAutomovil: string[];
+  protected tiposVehiculo: string[];
   protected departmentos: string[];
 
   constructor(
@@ -28,7 +28,7 @@ export class NuevoVehiculoComponent {
   ) {
     this.automovilForm = AutomovilForm;
     this.departmentos = Object.values(Departmento);
-    this.tiposAutomovil = Object.values(TipoAutomovil);
+    this.tiposVehiculo = Object.values(TipoAutomovil);
   }
 
   ngOnInit(): void {
@@ -81,9 +81,7 @@ export class NuevoVehiculoComponent {
             .realizado('Completado', 'Se ha enviado la solicitud con exito')
             .then((res: any) => {
               if (res.isConfirmed) {
-                this.router.navigate([
-                  'admin/lista-automoviles-nuevo-automovil/',
-                ]);
+                this.router.navigate(['admin/vehiculos']);
               }
             })
             .catch((e) => {

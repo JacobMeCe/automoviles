@@ -37,7 +37,7 @@
 
             <!-- form -->
             <form [formGroup]="this.automovilForm">
-              <div>
+              <div class="mb-5">
                 <div class="text-center mt-4">
                   <img id="imagePreview" [src]="getImage()" height="100%" width="300" alt="" />
                 </div>
@@ -52,29 +52,39 @@
                     <label for="placasInput">Placas</label>
                   </div>
                   <div class="col-12 form-floating mt-4 col-md mr-2">
-                    <input class="custom-input form-control" id="tipoAutomovilInput" readonly placeholder="" formControlName="TIPO_AUTOMOVIL" />
-                    <label for="tipoAutomovilInput">Tipo de Automóvil</label>
+                    <input class="custom-input form-control" id="tipoAutomovilInput" readonly placeholder="" formControlName="TIPO_VEHICULO" />
+                    <label for="tipoAutomovilInput">Tipo de Vehículo</label>
                   </div>
-                  <div class="col-12 form-floating mt-4 col-md">
-                    <input class="custom-input form-control" id="marcaInput" readonly placeholder="" formControlName="MARCA" />
-                    <label for="marcaInput">Marca del Automóvil</label>
+                  <div class="col-12 form-floating mt-4 col-md mr-2">
+                    <input class="custom-input form-control" id="numeroEconomicoInput" readonly placeholder="" formControlName="NUMERO_ECONOMICO" />
+                    <label for="numeroEconomicoInput">Número Económico</label>
                   </div>
                 </div>
+
                 <div class="row no-gutters form-floating">
                   <div class="col-12 form-floating mt-4 col-md mr-2">
-                    <input class="custom-input form-control" id="modelInput" readonly placeholder="" formControlName="MODELO" />
-                    <label for="modelInput">Sub-Marca del Automóvil</label>
+                    <input class="custom-input form-control" id="marcaInput" readonly placeholder="" formControlName="MARCA" />
+                    <label for="marcaInput">Marca</label>
                   </div>
+                  <div class="col-12 form-floating mt-4 col-md mr-2">
+                    <input class="custom-input form-control" id="anioInput" readonly placeholder="" formControlName="MODELO" />
+                    <label for="anioInput">Modelo</label>
+                  </div>
+                  <div class="col-12 form-floating mt-4 col-md">
+                    <input class="custom-input form-control" id="modelInput" readonly placeholder="" formControlName="SUBMARCA" />
+                    <label for="modelInput">Sub-Marca</label>
+                  </div>
+                </div>
+
+                <div class="row no-gutters form-floating">
                   <div class="col-12 form-floating mt-4 col-md mr-2">
                     <input class="custom-input form-control" id="colorInput" readonly placeholder="" formControlName="COLOR" />
                     <label for="colorInput">Color</label>
                   </div>
-                  <div class="col-12 form-floating mt-4 col-md">
+                  <div class="col-12 form-floating mt-4 col-md mr-2">
                     <input class="custom-input form-control" id="numeroSerieInput" readonly placeholder="" formControlName="NUMERO_SERIE" />
                     <label for="numeroSerieInput">Numero de Serie</label>
                   </div>
-                </div>
-                <div class="row no-gutters form-floating">
                   <div class="col-12 form-floating mt-4 col-md">
                     <input class="custom-input form-control" id="departmentoInput" readonly placeholder="" formControlName="DEPARTAMENTO" />
                     <label for="departmentoInput">Departamento</label>

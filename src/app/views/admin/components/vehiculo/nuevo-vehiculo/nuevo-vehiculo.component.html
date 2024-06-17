@@ -45,11 +45,16 @@
             </div>
 
             <div class="row form-floating mb-4">
-              <select id="tipoInput" class="form-control" formControlName="TIPO_AUTOMOVIL">
-                <option *ngFor="let tipo of tiposAutomovil" [value]="tipo">
+              <select id="tipoInput" class="form-control" formControlName="TIPO_VEHICULO">
+                <option *ngFor="let tipo of tiposVehiculo" [value]="tipo">
                   {{ tipo }}
               </select>
-              <label for="tipoInput">Tipo de Automóvil</label>
+              <label for="tipoInput">Tipo de Vehículo</label>
+            </div>
+
+            <div class="row form-floating mb-4">
+              <input id="anioInput" class="form-control" placeholder="" formControlName="NUMERO_ECONOMICO" />
+              <label for="anioInput">Número Económico</label>
             </div>
 
             <div class="row form-floating mb-4">
@@ -58,7 +63,12 @@
             </div>
 
             <div class="row form-floating mb-4">
-              <input id="modelInput" class="form-control" placeholder="" formControlName="MODELO" />
+              <input id="modeloInput" class="form-control" placeholder="" formControlName="MODELO" />
+              <label for="modeloInput">Modelo</label>
+            </div>
+
+            <div class="row form-floating mb-4">
+              <input id="modelInput" class="form-control" placeholder="" formControlName="SUBMARCA" />
               <label for="modelInput">Sub-Marca</label>
             </div>
 

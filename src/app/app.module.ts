@@ -18,7 +18,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
